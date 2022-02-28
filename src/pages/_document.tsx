@@ -62,7 +62,23 @@ class PageDocument extends Document<DocumentInitialProps> {
   render() {
     return (
       <Html>
-        <Head />
+        <Head>
+          <link
+            href={'https://fonts.googleapis.com'}
+            rel={'preconnect'}
+          />
+
+          <link
+            crossOrigin={'true'}
+            href={'https://fonts.gstatic.com'}
+            rel={'preconnect'}
+          />
+
+          <link
+            href={'https://fonts.googleapis.com/css2?family=DM+Sans&display=swap'}
+            rel={'stylesheet'}
+          />
+        </Head>
 
         <body>
           {googleTagManagerId && (
