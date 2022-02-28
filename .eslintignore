@@ -1,0 +1,9 @@
+dist*
+public/static/js/*
+node_modules
+out
+.eslintrc.js
+.next
+next-env.d.ts
+next.config.js
+next-sitemap.js
