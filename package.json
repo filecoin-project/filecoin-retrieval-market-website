@@ -1,0 +1,101 @@
+{
+  "name": "onda-website",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Onda website",
+  "keywords": [
+    "onda",
+    "web3",
+    "nextjs",
+    "react",
+    "styled-components",
+    "typescript",
+    "website"
+  ],
+  "homepage": "https://github.com/untile/onda-website#readme",
+  "bugs": {
+    "url": "https://github.com/untile/onda-website/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/untile/onda-website.git"
+  },
+  "license": "UNLICENSED",
+  "author": {
+    "name": "Untile",
+    "email": "hello@untile.pt",
+    "url": "https://untile.pt"
+  },
+  "scripts": {
+    "bundle": "next build && next-sitemap",
+    "changelog": "github-changelog-generator -b development --future-release=v$npm_package_version > CHANGELOG.md",
+    "lint": "yarn lint:js && next lint && yarn lint:styles && yarn lint:types",
+    "lint:js": "eslint .",
+    "lint:styles": "stylelint 'src/**/*.@(ts|tsx|js)'",
+    "lint:types": "tsc --noEmit",
+    "pre-commit": "lint-staged",
+    "start": "next dev",
+    "start:production": "yarn bundle && next start",
+    "version": "npm run changelog && git add -A CHANGELOG.md"
+  },
+  "lint-staged": {
+    "*.@(ts|tsx)": [
+      "bash -c tsc --noEmit"
+    ],
+    "*.@(ts|tsx|js)": [
+      "yarn lint:js",
+      "yarn lint:styles"
+    ],
+    "package.json": [
+      "sort-package-json"
+    ],
+    "yarn.lock": [
+      "yarn-deduplicate"
+    ]
+  },
+  "dependencies": {
+    "@untile/react-components": "^0.0.1",
+    "airtable": "^0.11.1",
+    "axios": "^0.26.0",
+    "lodash": "^4.17.21",
+    "next": "^12.0.4",
+    "next-sitemap": "^1.5.8",
+    "qs": "^6.9.6",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-query": "^3.17.2",
+    "react-transition-group": "^4.4.2",
+    "styled-components": "^5.2.3",
+    "styled-tools": "^1.7.2",
+    "webpack-bundle-size-analyzer": "^3.1.0"
+  },
+  "devDependencies": {
+    "@next/eslint-plugin-next": "^12.0.4",
+    "@types/axios": "^0.14.0",
+    "@types/node": "^17.0.9",
+    "@types/qs": "^6.9.6",
+    "@types/react": "^17.0.22",
+    "@types/react-dom": "^17.0.12",
+    "@types/react-query": "^1.2.9",
+    "@types/styled-components": "^5.1.24",
+    "@typescript-eslint/eslint-plugin": "^4.33.0",
+    "@typescript-eslint/parser": "^4.33.0",
+    "@untile/eslint-config-untile-react": "^0.0.5",
+    "@untile/stylelint-config-untile": "^0.0.2",
+    "@uphold/github-changelog-generator": "^1.0.2",
+    "eslint": "^7.23.0",
+    "eslint-config-next": "^12.0.4",
+    "husky": "^7.0.2",
+    "lint-staged": "^11.1.2",
+    "sort-package-json": "^1.49.0",
+    "stylelint": "^13.12.0",
+    "svg-inline-loader": "^0.8.2",
+    "typescript": "4.3.4",
+    "yarn-deduplicate": "^3.1.0"
+  },
+  "engines": {
+    "node": ">= 14.17.0",
+    "npm": "please-use-yarn",
+    "yarn": ">=1.22.0"
+  }
+}

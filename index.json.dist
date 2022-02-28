@@ -1,0 +1,14 @@
+{
+  "args" : "start",
+  "cwd": "/path/to/app/directory",
+  "env": {
+    "NODE_ENV": "<environment>"
+  },
+  "exec_mode": "fork",
+  "instances": "8",
+  "kill_timeout": 120000,
+  "merge_logs": true,
+  "name": "onda-website",
+  "script": "./node_modules/next/dist/bin/next",
+  "wait_ready": true
+}

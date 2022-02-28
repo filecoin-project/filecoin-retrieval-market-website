@@ -1,0 +1,50 @@
+name: Test
+
+on:
+  pull_request:
+    branches:
+      - development
+      - master
+
+  push:
+    branches:
+      - development
+      - master
+
+jobs:
+  build:
+    timeout-minutes: 20
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Setup node
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14.17.0'
+          registry-url: 'https://npm.pkg.github.com'
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.WORKFLOW_TOKEN }}
+
+      - name: Setup module dependencies cache
+        uses: actions/cache@v2
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-modules-${{ hashFiles('**/yarn.lock') }}
+
+      - name: Install module dependencies
+        run:  yarn install --frozen-lockfile
+
+      - name: Lint javascript
+        run: yarn lint:js
+
+      - name: Lint styles
+        run: yarn lint:styles
+
+      - name: Lint types
+        run: yarn lint:types
+      
+      - name: Bundle
+        run: yarn bundle
