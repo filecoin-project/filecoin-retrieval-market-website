@@ -5,6 +5,7 @@
 
 import { animations } from './animations';
 import { colors } from './colors';
+import { keyframes } from './keyframes';
 import { typography } from './type';
 
 /**
@@ -18,5 +19,6 @@ export const theme = {
     gutter: 40,
     gutterMobile: 16
   },
+  keyframes,
   typography
 };
