@@ -59,6 +59,7 @@ const Text = styled.div`
   background-color: ${color('white')};
   border-top: 1px solid ${color.transparentize('black', 0.1)};
   bottom: 0;
+  color: ${color('black')};
   display: flex;
   flex-direction: column;
   font-family: 'Roboto', sans-serif;
