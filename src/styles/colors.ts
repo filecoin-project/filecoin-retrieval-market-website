@@ -6,6 +6,7 @@
 const palette = {
   black: '#000000',
   blue200: '#75a1ff',
+  blue300: '#3575ff',
   blue400: '#2c61cf',
   blue500: '#2b5fcf',
   blue600: '#2755b8',
