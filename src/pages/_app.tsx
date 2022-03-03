@@ -3,8 +3,7 @@
  * Module dependencies.
  */
 
-import { Hydrate, QueryClient, QueryClientProvider } from 'react-query';
-import { ReactQueryDevtools } from 'react-query/devtools';
+import { AppProps, NextWebVitalsMetric } from 'next/app';
 import { ThemeProvider } from 'styled-components';
 import {
   GlobalStyle as UntileGlobalStyle,
@@ -14,7 +13,6 @@ import {
 
 import { countlyInit } from 'src/core/utils/countly';
 import { theme } from 'src/styles/theme';
-import App, { AppContext, AppProps, NextWebVitalsMetric } from 'next/app';
 import GlobalStyle from 'src/components/core/global-style';
 import GridDebug from 'src/components/core/debug/grid';
 import Head from 'next/head';
@@ -29,12 +27,6 @@ import packageJson from 'package.json';
 
 const performanceDebug = process.env.NEXT_PUBLIC_PERFORMANCE_DEBUG;
 const debug: boolean = performanceDebug === 'true';
-
-/**
- * Query cache.
- */
-
-const queryClient = new QueryClient();
 
 /**
  * Export `reportWebVitals`.
@@ -120,40 +112,26 @@ const PageApp = (props: AppProps): ReactElement => {
         {`history.scrollRestoration = "manual"`}
       </Script>
 
-      <QueryClientProvider client={queryClient}>
-        <Hydrate state={pageProps.dehydratedState}>
-          <ThemeProvider theme={createTheme(theme)}>
-            <UntileGlobalStyle />
+      <ThemeProvider theme={createTheme(theme)}>
+        <UntileGlobalStyle />
 
-            <GlobalStyle />
+        <GlobalStyle />
 
-            {!isProduction() && (
-              <GridDebug
-                columns={12}
-                gap={16}
-              />
-            )}
+        <GlobalStyle />
 
-            <Navbar />
+        {!isProduction() && (
+          <GridDebug
+            columns={12}
+            gap={16}
+          />
+        )}
 
-            <Component {...pageProps} />
-          </ThemeProvider>
-        </Hydrate>
+        <Navbar />
 
-        <ReactQueryDevtools initialIsOpen={!isProduction()} />
-      </QueryClientProvider>
+        <Component {...pageProps} />
+      </ThemeProvider>
     </>
   );
-};
-
-/**
- * Get initial props.
- */
-
-PageApp.getInitialProps = async (appContext: AppContext) => {
-  return {
-    ...await App.getInitialProps(appContext)
-  };
 };
 
 /**
