@@ -13,7 +13,7 @@ import React, { ReactElement, useMemo } from 'react';
  * Default title.
  */
 
-const defaultTitle = 'Onda';
+const defaultTitle = 'Filecoin retrieval market';
 
 /**
  * `Props` type.

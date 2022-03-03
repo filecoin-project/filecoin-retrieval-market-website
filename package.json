@@ -1,10 +1,10 @@
 {
-  "name": "onda-website",
+  "name": "filecoin-retrieval-market-website",
   "version": "0.0.0",
   "private": true,
-  "description": "Onda website",
+  "description": "Filecoin retrieval market website",
   "keywords": [
-    "onda",
+    "filecoin",
     "web3",
     "nextjs",
     "react",
@@ -12,13 +12,13 @@
     "typescript",
     "website"
   ],
-  "homepage": "https://github.com/untile/onda-website#readme",
+  "homepage": "https://github.com/untile/filecoin-retrieval-market-website#readme",
   "bugs": {
-    "url": "https://github.com/untile/onda-website/issues"
+    "url": "https://github.com/untile/filecoin-retrieval-market-website/issues"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/untile/onda-website.git"
+    "url": "git+https://github.com/untile/filecoin-retrieval-market-website.git"
   },
   "license": "UNLICENSED",
   "author": {

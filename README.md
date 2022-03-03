@@ -1,4 +1,4 @@
-# onda-website
+# filecoin-retrieval-market-website
 
 ## Project setup
 
@@ -11,7 +11,7 @@
 ## Docs and links
 
 - [Figma design](https://www.figma.com/file/Jyqz4uiIduzTDulNAs0A0U/Retrieval-Market-(Dev)?node-id=2%3A2)
-- [Website staging](https://onda-website-staging.vercel.app/)
+- [Website staging](https://filecoin-retrieval-market-website-staging.vercel.app/)
 
 ### Install dependencies
 
