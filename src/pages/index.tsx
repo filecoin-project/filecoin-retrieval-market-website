@@ -3,6 +3,8 @@
  * Module dependencies.
  */
 
+import { colors } from 'src/styles/colors';
+import HeaderSection from 'src/components/sections/header-section';
 import React, { ReactElement } from 'react';
 
 /**
@@ -10,9 +12,7 @@ import React, { ReactElement } from 'react';
  */
 
 const Home = (): ReactElement => (
-  <>
-    {'Filecoin retrieval market website'}
-  </>
+  <HeaderSection dotsColor={colors.blue600} />
 );
 
 /**
