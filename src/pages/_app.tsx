@@ -18,6 +18,7 @@ import App, { AppContext, AppProps, NextWebVitalsMetric } from 'next/app';
 import GlobalStyle from 'src/components/core/global-style';
 import GridDebug from 'src/components/core/debug/grid';
 import Head from 'next/head';
+import Navbar from 'src/components/navbar';
 import React, { ReactElement, useEffect } from 'react';
 import Script from 'next/script';
 import packageJson from 'package.json';
@@ -132,6 +133,8 @@ const PageApp = (props: AppProps): ReactElement => {
                 gap={16}
               />
             )}
+
+            <Navbar />
 
             <Component {...pageProps} />
           </ThemeProvider>
