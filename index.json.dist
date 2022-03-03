@@ -8,7 +8,7 @@
   "instances": "8",
   "kill_timeout": 120000,
   "merge_logs": true,
-  "name": "onda-website",
+  "name": "filecoin-retrieval-market-website",
   "script": "./node_modules/next/dist/bin/next",
   "wait_ready": true
 }

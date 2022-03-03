@@ -11,7 +11,7 @@ import React, { ReactElement } from 'react';
 
 const Home = (): ReactElement => (
   <>
-    {'Onda website'}
+    {'Filecoin retrieval market website'}
   </>
 );
 
