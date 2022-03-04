@@ -4,6 +4,7 @@
  */
 
 import {
+  Image,
   color,
   media,
   units,
@@ -17,7 +18,6 @@ import { theme } from 'styled-tools';
 import Button from 'src/components/core/buttons/button';
 import Container from 'src/components/core/layout/container';
 import HamburgerMenu from './hamburger-menu';
-import Image from 'src/components/core/image';
 import React, { ReactElement, useCallback, useEffect, useState } from 'react';
 import RouterLink from 'src/components/core/links/router-link';
 import Sidebar from './sidebar';
@@ -78,6 +78,18 @@ const LogoLink = styled(RouterLink)`
 `;
 
 /**
+ * `StyledImage` styled component.
+ */
+
+const StyledImage = styled(Image)`
+  width: ${units(7.5)};
+
+  ${media.min('lg')`
+    width: 70px;
+  `}
+`;
+
+/**
  * `Actions` styled component.
  */
 
@@ -134,13 +146,7 @@ const Navbar = (): ReactElement => {
       <Container>
         <ContentWrapper>
           <LogoLink href={routes.home}>
-            <Image
-              alt={'Onda'}
-              height={isMobile ? '60px' : '70px'}
-              layout={'fixed'}
-              src={'/static/images/logo.png'}
-              width={isMobile ? '60px' : '70px'}
-            />
+            <StyledImage defaultUrl={'/static/images/logo.png'} />
           </LogoLink>
 
           <Actions size={size(navbarLinks)}>
