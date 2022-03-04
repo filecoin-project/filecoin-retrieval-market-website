@@ -17,8 +17,9 @@ const domains = process.env.IMAGES_DOMAINS;
 
 module.exports = {
   compiler: {
-    styledComponents: true
+      styledComponents: true
   },
+  exportTrailingSlash: true,
   publicRuntimeConfig: {
     vercelBaseUrl: process.env.VERCEL_URL
   },
