@@ -12,12 +12,14 @@ import {
   isProduction
 } from '@untile/react-components';
 
+import { countlyInit } from 'src/core/utils/countly';
 import { theme } from 'src/styles/theme';
 import App, { AppContext, AppProps, NextWebVitalsMetric } from 'next/app';
 import GlobalStyle from 'src/components/core/global-style';
 import GridDebug from 'src/components/core/debug/grid';
 import Head from 'next/head';
-import React, { ReactElement } from 'react';
+import React, { ReactElement, useEffect } from 'react';
+import Script from 'next/script';
 import packageJson from 'package.json';
 
 /**
@@ -32,12 +34,6 @@ const debug: boolean = performanceDebug === 'true';
  */
 
 const queryClient = new QueryClient();
-
-/**
- * Google tag manager dd.
- */
-
-const googleTagManagerId = process.env.NEXT_PUBLIC_GOOGLE_TAG_MANAGER_ID;
 
 /**
  * Export `reportWebVitals`.
@@ -57,6 +53,10 @@ export function reportWebVitals(metric: NextWebVitalsMetric) {
 
 const PageApp = (props: AppProps): ReactElement => {
   const { Component, pageProps } = props;
+
+  useEffect(() => {
+    countlyInit();
+  }, []);
 
   return (
     <>
@@ -110,37 +110,14 @@ const PageApp = (props: AppProps): ReactElement => {
           content={'true'}
           name={'HandheldFriendly'}
         />
-
-        <script
-          // eslint-disable-next-line react/no-danger
-          dangerouslySetInnerHTML={{
-            __html: `history.scrollRestoration = "manual"`
-          }}
-        />
-
-        {googleTagManagerId && (
-          <script
-            async
-            src={`https://www.googletagmanager.com/gtag/js?id=${googleTagManagerId}`}
-          />
-        )}
-
-        {googleTagManagerId && (
-          <script
-            // eslint-disable-next-line react/no-danger
-            dangerouslySetInnerHTML={{
-              __html: `
-              window.dataLayer = window.dataLayer || [];
-              function gtag(){dataLayer.push(arguments);}
-              gtag('js', new Date());
-              
-              gtag('config', '${googleTagManagerId}');
-              `
-            }}
-            id={'gta'}
-          />
-        )}
       </Head>
+
+      <Script
+        id={'scroll-restoration'}
+        strategy={'beforeInteractive'}
+      >
+        {`history.scrollRestoration = "manual"`}
+      </Script>
 
       <QueryClientProvider client={queryClient}>
         <Hydrate state={pageProps.dehydratedState}>
