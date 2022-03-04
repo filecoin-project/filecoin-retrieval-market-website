@@ -19,10 +19,6 @@ module.exports = {
   compiler: {
     styledComponents: true
   },
-  images: {
-    deviceSizes: [320, 480, 576, 768, 992, 1200, 1440, 1920],
-    domains: domains.split(',')
-  },
   publicRuntimeConfig: {
     vercelBaseUrl: process.env.VERCEL_URL
   },
