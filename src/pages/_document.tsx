@@ -14,12 +14,6 @@ import Document, {
 } from 'next/document';
 
 /**
- * Google tag manager dd.
- */
-
-const googleTagManagerId = process.env.NEXT_PUBLIC_GOOGLE_TAG_MANAGER_ID;
-
-/**
  * `PageDocument` page.
  */
 
@@ -81,17 +75,6 @@ class PageDocument extends Document<DocumentInitialProps> {
         </Head>
 
         <body>
-          {googleTagManagerId && (
-            <noscript>
-              <iframe
-                height={0}
-                src={`https://www.googletagmanager.com/ns.html?id=${googleTagManagerId}`}
-                style={{ display: 'none', visibility: 'hidden' }}
-                width={0}
-              />
-            </noscript>
-          )}
-
           <Main />
 
           <NextScript />
