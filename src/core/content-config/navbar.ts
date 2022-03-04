@@ -14,6 +14,7 @@ export type NavbarLink = {
 
 export const sectionsIds = {
   sectionContact: 'sectionContact',
+  sectionDotsGrid: 'sectionDotsGrid',
   sectionProgress: 'sectionProgress',
   sectionProjectsAndOpportunities: 'sectionProjectsAndOpportunities',
   sectionRoadmap: 'sectionRoadmap',
