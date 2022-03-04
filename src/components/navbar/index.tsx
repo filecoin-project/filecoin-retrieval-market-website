@@ -4,7 +4,6 @@
  */
 
 import {
-  color,
   media,
   units,
   useBodyScroll,
@@ -12,14 +11,11 @@ import {
 } from '@untile/react-components';
 
 import { navbarLinks } from 'src/core/content-config/navbar';
-import { routes } from 'src/core/routes';
 import { theme } from 'styled-tools';
 import Button from 'src/components/core/buttons/button';
 import Container from 'src/components/core/layout/container';
 import HamburgerMenu from './hamburger-menu';
-import Image from 'src/components/core/image';
 import React, { ReactElement, useCallback, useEffect, useState } from 'react';
-import RouterLink from 'src/components/core/links/router-link';
 import Sidebar from './sidebar';
 import map from 'lodash/map';
 import size from 'lodash/size';
@@ -54,27 +50,6 @@ const ContentWrapper = styled.div`
   display: grid;
   grid-gap: ${units(4)};
   grid-template-columns: max-content 1fr;
-`;
-
-/**
- * `LogoLink` styled component.
- */
-
-const LogoLink = styled(RouterLink)`
-  color: ${color('white')};
-  height: ${units(6)};
-  transition: opacity ${theme('animations.defaultTransition')};
-  z-index: ${theme('zIndex.menuLogo')};
-
-  ${media.max('sm')`
-    position: relative;
-  `}
-
-  &:focus,
-  &:hover {
-    opacity: 0.7;
-    transition-delay: 0s;
-  }
 `;
 
 /**
@@ -133,16 +108,6 @@ const Navbar = (): ReactElement => {
     <Nav>
       <Container>
         <ContentWrapper>
-          <LogoLink href={routes.home}>
-            <Image
-              alt={'Onda'}
-              height={isMobile ? '60px' : '70px'}
-              layout={'fixed'}
-              src={'/static/images/logo.png'}
-              width={isMobile ? '60px' : '70px'}
-            />
-          </LogoLink>
-
           <Actions size={size(navbarLinks)}>
             {!isMobile ? map(navbarLinks, ({ id, label }) => (
               <Button

@@ -27,7 +27,7 @@
     "url": "https://untile.pt"
   },
   "scripts": {
-    "bundle": "next build && next-sitemap",
+    "bundle": "next build && next-sitemap && next export",
     "changelog": "github-changelog-generator -b development --future-release=v$npm_package_version > CHANGELOG.md",
     "lint": "yarn lint:js && next lint && yarn lint:styles && yarn lint:types",
     "lint:js": "eslint .",
