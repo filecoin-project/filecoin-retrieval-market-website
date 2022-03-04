@@ -18,6 +18,7 @@ import GlobalStyle from 'src/components/core/global-style';
 import GridDebug from 'src/components/core/debug/grid';
 import Head from 'next/head';
 import React, { ReactElement } from 'react';
+import Script from 'next/script';
 import packageJson from 'package.json';
 
 /**
@@ -50,6 +51,43 @@ export function reportWebVitals(metric: NextWebVitalsMetric) {
     console.log(metric); // eslint-disable-line no-console
   }
 }
+
+/**
+ * `Scripts` component.
+ */
+
+const Scripts = (): ReactElement => (
+  <>
+    <Script
+      id={'scroll-restoration'}
+      strategy={'beforeInteractive'}
+    >
+      {`history.scrollRestoration = "manual"`}
+    </Script>
+
+    {googleTagManagerId && (
+      <Script
+        src={`https://www.googletagmanager.com/gtag/js?id=${googleTagManagerId}`}
+        strategy={'afterInteractive'}
+      />
+    )}
+
+    {googleTagManagerId && (
+      <Script
+        id={'google-tag-manager'}
+        strategy={'afterInteractive'}
+      >
+        {`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          
+          gtag('config', '${googleTagManagerId}');
+        `}
+      </Script>
+    )}
+  </>
+);
 
 /**
  * `PageApp` page.
@@ -110,37 +148,9 @@ const PageApp = (props: AppProps): ReactElement => {
           content={'true'}
           name={'HandheldFriendly'}
         />
-
-        <script
-          // eslint-disable-next-line react/no-danger
-          dangerouslySetInnerHTML={{
-            __html: `history.scrollRestoration = "manual"`
-          }}
-        />
-
-        {googleTagManagerId && (
-          <script
-            async
-            src={`https://www.googletagmanager.com/gtag/js?id=${googleTagManagerId}`}
-          />
-        )}
-
-        {googleTagManagerId && (
-          <script
-            // eslint-disable-next-line react/no-danger
-            dangerouslySetInnerHTML={{
-              __html: `
-              window.dataLayer = window.dataLayer || [];
-              function gtag(){dataLayer.push(arguments);}
-              gtag('js', new Date());
-              
-              gtag('config', '${googleTagManagerId}');
-              `
-            }}
-            id={'gta'}
-          />
-        )}
       </Head>
+
+      <Scripts />
 
       <QueryClientProvider client={queryClient}>
         <Hydrate state={pageProps.dehydratedState}>
