@@ -10,6 +10,7 @@ import { getRecords } from 'src/core/api/airtable';
 import { sectionsIds } from 'src/core/content-config/navbar';
 import Container from 'src/components/core/layout/container';
 import DotsGridSection from 'src/components/sections/dots-grid-section';
+import Metatags from 'src/components/core/metatags';
 import React, { ReactElement } from 'react';
 import styled from 'styled-components';
 
@@ -37,39 +38,45 @@ const Home = ({ data }: Props): ReactElement => {
   console.log(data); // eslint-disable-line no-console
 
   return (
-    <Container>
-      <Section id={sectionsIds.sectionDotsGrid}>
-        <DotsGridSection dotsColor={colors.blue600} />
-      </Section>
+    <>
+      <Metatags
+        description={'The Filecoin Retrieval Market facilitates a decentralized and trustless CDN for content addressed data.'}
+      />
 
-      <Section id={sectionsIds.sectionWhyNow}>
-        {'Section Why Now'}
-      </Section>
+      <Container>
+        <Section id={sectionsIds.sectionDotsGrid}>
+          <DotsGridSection dotsColor={colors.blue600} />
+        </Section>
 
-      <Section id={sectionsIds.sectionWhatWeDo}>
-        {'Section What we do'}
-      </Section>
+        <Section id={sectionsIds.sectionWhyNow}>
+          {'Section Why Now'}
+        </Section>
 
-      <Section id={sectionsIds.sectionProgress}>
-        {'Section Progress'}
-      </Section>
+        <Section id={sectionsIds.sectionWhatWeDo}>
+          {'Section What we do'}
+        </Section>
 
-      <Section id={sectionsIds.sectionProjectsAndOpportunities}>
-        {'Section Projects and opportunities'}
-      </Section>
+        <Section id={sectionsIds.sectionProgress}>
+          {'Section Progress'}
+        </Section>
 
-      <Section id={sectionsIds.sectionTeams}>
-        {'Section Teams'}
-      </Section>
+        <Section id={sectionsIds.sectionProjectsAndOpportunities}>
+          {'Section Projects and opportunities'}
+        </Section>
 
-      <Section id={sectionsIds.sectionRoadmap}>
-        {'Section Roadmap'}
-      </Section>
+        <Section id={sectionsIds.sectionTeams}>
+          {'Section Teams'}
+        </Section>
 
-      <Section id={sectionsIds.sectionContact}>
-        {'Section Contact'}
-      </Section>
-    </Container>
+        <Section id={sectionsIds.sectionRoadmap}>
+          {'Section Roadmap'}
+        </Section>
+
+        <Section id={sectionsIds.sectionContact}>
+          {'Section Contact'}
+        </Section>
+      </Container>
+    </>
   );
 };
 
