@@ -6,12 +6,6 @@
 const { WebpackBundleSizeAnalyzerPlugin } = require('webpack-bundle-size-analyzer');
 
 /**
- * Constants.
- */
-
-const domains = process.env.IMAGES_DOMAINS;
-
-/**
  * Export next configuration.
  */
 

@@ -12,7 +12,7 @@ import getConfig from 'next/config';
 
 export function absoluteUrlResolver(path: string): string {
   const { publicRuntimeConfig } = getConfig();
-  const vercelBaseUrl = publicRuntimeConfig.vercelBaseUrl;
+  const vercelBaseUrl = publicRuntimeConfig?.vercelBaseUrl;
   const url: string = vercelBaseUrl ? `https://${vercelBaseUrl}` : process.env.NEXT_PUBLIC_BASE_URL;
 
   return resolve(url, path);
