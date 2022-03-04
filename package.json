@@ -28,6 +28,7 @@
   },
   "scripts": {
     "bundle": "next build && next-sitemap",
+    "bundle:production": "rm -rf ${OUT_DIR:-dist} .next && next build && next-sitemap && next export -o ${OUT_DIR:-dist}",
     "changelog": "github-changelog-generator -b development --future-release=v$npm_package_version > CHANGELOG.md",
     "lint": "yarn lint:js && next lint && yarn lint:styles && yarn lint:types",
     "lint:js": "eslint .",
