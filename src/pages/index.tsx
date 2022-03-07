@@ -11,6 +11,7 @@ import { sectionsIds } from 'src/core/content-config/navbar';
 import Container from 'src/components/core/layout/container';
 import DotsGridSection from 'src/components/sections/dots-grid-section';
 import Metatags from 'src/components/core/metatags';
+import NodesSection from 'src/components/sections/nodes-section';
 import React, { ReactElement } from 'react';
 import styled from 'styled-components';
 
@@ -46,6 +47,10 @@ const Home = ({ data }: Props): ReactElement => {
       <Container>
         <Section id={sectionsIds.sectionDotsGrid}>
           <DotsGridSection dotsColor={colors.blue600} />
+        </Section>
+
+        <Section id={sectionsIds.secitonWebNodes}>
+          <NodesSection />
         </Section>
 
         <Section id={sectionsIds.sectionWhyNow}>
