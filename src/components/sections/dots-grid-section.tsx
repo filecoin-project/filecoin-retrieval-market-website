@@ -3,7 +3,8 @@
  * Module dependencies.
  */
 
-import { transparentize } from '@untile/react-components';
+import { media, transparentize, units } from '@untile/react-components';
+import { theme } from 'styled-tools';
 import React, {
   ReactElement,
   useCallback,
@@ -65,7 +66,17 @@ const gapBetweenDots = 40;
  */
 
 const Wrapper = styled.div`
-  width: 100%;
+  bottom: 0;
+  left: ${theme('grid.gutterMobile')}px;
+  overflow: hidden;
+  position: absolute;
+  right: ${theme('grid.gutterMobile')}px;
+  top: 0;
+
+  ${media.min('lg')`
+    left: ${units(2.5)};
+    right: ${units(2.5)};
+  `}
 `;
 
 /**
@@ -234,7 +245,7 @@ const DotsGridSection = ({ className, dotsColor }: Props): ReactElement => {
     const handleWindowResize = () => {
       if (wrapperRef && wrapperRef?.current && canvasRef && canvasRef?.current) {
         const canvasWidth = wrapperRef.current.clientWidth;
-        const canvasHeight = window.innerHeight;
+        const canvasHeight = wrapperRef.current.clientHeight;
         const totalRows = Math.floor(canvasHeight / gapBetweenDots);
 
         setTotalColumns(Math.floor(canvasWidth / gapBetweenDots));
