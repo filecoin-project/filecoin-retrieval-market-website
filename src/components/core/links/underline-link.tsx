@@ -89,6 +89,10 @@ const UnderlineLink = (props: Props): ReactElement => {
     <Link
       href={href}
       size={size ?? 'default'}
+      {...href && isExternalUrl(href) && {
+        rel: 'noopener',
+        target: '_blank'
+      }}
     >
       {children}
     </Link>
