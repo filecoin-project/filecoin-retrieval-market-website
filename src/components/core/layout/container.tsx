@@ -12,6 +12,7 @@ import styled from 'styled-components';
  */
 
 const Container = styled(DefaultContainer)`
+  min-height: inherit;
   padding: 0 ${theme('grid.gutterMobile')}px;
 
   ${media.min('lg')`
