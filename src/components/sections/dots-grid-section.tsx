@@ -3,8 +3,7 @@
  * Module dependencies.
  */
 
-import { media, transparentize, units } from '@untile/react-components';
-import { theme } from 'styled-tools';
+import { transparentize } from '@untile/react-components';
 import React, {
   ReactElement,
   useCallback,
@@ -67,16 +66,10 @@ const gapBetweenDots = 40;
 
 const Wrapper = styled.div`
   bottom: 0;
-  left: ${theme('grid.gutterMobile')}px;
-  overflow: hidden;
+  left: 0;
   position: absolute;
-  right: ${theme('grid.gutterMobile')}px;
+  right: 0;
   top: 0;
-
-  ${media.min('lg')`
-    left: ${units(2.5)};
-    right: ${units(2.5)};
-  `}
 `;
 
 /**
