@@ -15,8 +15,6 @@ export default createGlobalStyle`
   body {
     ${typography.styles.p}
     
-    background: linear-gradient(180deg, #050c1b 0%, #2c61cf 89.85%);
-    background-repeat: no-repeat;
     color: ${color('textColor')};
   }
 `;
