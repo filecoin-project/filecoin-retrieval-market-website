@@ -13,13 +13,13 @@ export type NavbarLink = {
  */
 
 export const sectionsIds = {
-  secitonWebNodes: 'secitonWebNodes',
   sectionContact: 'sectionContact',
   sectionDotsGrid: 'sectionDotsGrid',
   sectionProgress: 'sectionProgress',
   sectionProjectsAndOpportunities: 'sectionProjectsAndOpportunities',
   sectionRoadmap: 'sectionRoadmap',
   sectionTeams: 'sectionTeams',
+  sectionWebNodes: 'sectionWebNodes',
   sectionWhatWeDo: 'sectionWhatWeDo',
   sectionWhyNow: 'sectionWhyNow'
 };

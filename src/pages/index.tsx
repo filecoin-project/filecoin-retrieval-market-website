@@ -5,12 +5,12 @@
 
 import { APIResponse } from 'src/types/api';
 import { GetStaticProps } from 'next';
-import { colors } from 'src/styles/colors';
+import { color } from '@untile/react-components';
 import { getRecords } from 'src/core/api/airtable';
 import { sectionsIds } from 'src/core/content-config/navbar';
 import ContactsSection from 'src/components/sections/contacts-section';
 import Container from 'src/components/core/layout/container';
-import DotsGridSection from 'src/components/sections/dots-grid-section';
+import IntroSection from 'src/components/sections/intro-section';
 import Metatags from 'src/components/core/metatags';
 import NodesSection from 'src/components/sections/nodes-section';
 import React, { ReactElement } from 'react';
@@ -38,7 +38,7 @@ const Section = styled.section`
  */
 
 const BodyGradient = styled.div`
-  background: linear-gradient(180deg, #050c1b 0%, #2c61cf 89.85%);
+  background: linear-gradient(180deg, ${color('blue900')} 0%, ${color('blue400')} 89.85%);
   background-repeat: no-repeat;
 `;
 
@@ -47,8 +47,6 @@ const BodyGradient = styled.div`
  */
 
 const Home = ({ data }: Props): ReactElement => {
-  console.log(data); // eslint-disable-line no-console
-
   return (
     <>
       <Metatags
@@ -56,20 +54,19 @@ const Home = ({ data }: Props): ReactElement => {
       />
 
       <BodyGradient>
-        <Section>
-          <Container>
-            <DotsGridSection dotsColor={colors.blue600} />
-          </Container>
-        </Section>
-
-        <Section id={sectionsIds.secitonWebNodes}>
-          <NodesSection />
-        </Section>
+        <IntroSection
+          nextSectionId={sectionsIds.sectionWhyNow}
+          title={data?.content?.homeDescription}
+        />
 
         <Section id={sectionsIds.sectionWhyNow}>
           <Container>
             {'Section Why Now'}
           </Container>
+        </Section>
+
+        <Section id={sectionsIds.sectionWebNodes}>
+          <NodesSection />
         </Section>
 
         <Section id={sectionsIds.sectionWhatWeDo}>
