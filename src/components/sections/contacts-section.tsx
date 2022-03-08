@@ -352,8 +352,11 @@ const ContactsSection = ({ data, id }: Props): ReactElement => {
           </Box>
 
           <FooterLinksWrapper>
-            {map(footerLinks, ({ name, value }) => value && (
-              <UnderlineLink href={value}>
+            {map(footerLinks, ({ name, value }, index: number) => value && (
+              <UnderlineLink
+                href={value}
+                key={index}
+              >
                 {name}
               </UnderlineLink>
             ))}
@@ -387,13 +390,14 @@ const ContactsSection = ({ data, id }: Props): ReactElement => {
           </AuthorWrapper>
 
           <SocialNetworksWrapper>
-            {map(socialNetworks, ({ name, value }) => value && (
+            {map(socialNetworks, ({ name, value }, index: number) => value && (
               <Button
                 href={value}
                 {...value && isExternalUrl(value) && {
                   rel: 'noopener',
                   target: '_blank'
                 }}
+                key={index}
               >
                 {name}
               </Button>
