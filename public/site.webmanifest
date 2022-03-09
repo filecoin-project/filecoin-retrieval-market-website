@@ -1,0 +1,19 @@
+{
+    "name": "Filecoin Retrieval Market",
+    "short_name": "Filecoin Retrieval Market",
+    "icons": [
+        {
+            "src": "/static/favicon/android-chrome-192x192.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "/static/favicon/android-chrome-256x256.png",
+            "sizes": "256x256",
+            "type": "image/png"
+        }
+    ],
+    "theme_color": "#0a142b",
+    "background_color": "#0a142b",
+    "display": "standalone"
+}
