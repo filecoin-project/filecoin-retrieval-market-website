@@ -79,29 +79,45 @@ const PageApp = (props: AppProps): ReactElement => {
           name={'HandheldFriendly'}
         />
 
-        <meta
-          content={'IE=edge'}
-          httpEquiv={'X-UA-Compatible'}
+        <link
+          href={'/static/favicon/apple-touch-icon.png'}
+          rel={'apple-touch-icon'}
+          sizes={'180x180'}
+        />
+
+        <link
+          href={'/static/favicon/favicon-32x32.png'}
+          rel={'icon'}
+          sizes={'32x32'}
+          type={'image/png'}
+        />
+
+        <link
+          href={'/static/favicon/favicon-16x16.png'}
+          rel={'icon'}
+          sizes={'16x16'}
+          type={'image/png'}
+        />
+
+        <link
+          href={'/site.webmanifest'}
+          rel={'manifest'}
+        />
+
+        <link
+          color={'#5bbad5'}
+          href={'/safari-pinned-tab.svg'}
+          rel={'mask-icon'}
         />
 
         <meta
-          content={'text/html;charset=utf-8'}
-          httpEquiv={'Content-Type'}
+          content={'#da532c'}
+          name={'msapplication-TileColor'}
         />
 
         <meta
-          content={'width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no'}
-          name={'viewport'}
-        />
-
-        <meta
-          content={packageJson.version}
-          name={'version'}
-        />
-
-        <meta
-          content={'true'}
-          name={'HandheldFriendly'}
+          content={'#0a142b'}
+          name={'theme-color'}
         />
       </Head>
 
