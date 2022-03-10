@@ -13,6 +13,7 @@ import styled from 'styled-components';
 
 const Highlight = styled.span`
   color: inherit;
+  cursor: default;
   transition: ${theme('animations.defaultTransition')};
 
   &:focus,
