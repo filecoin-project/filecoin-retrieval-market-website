@@ -40,7 +40,7 @@ const Section = styled.section`
   position: relative;
 
   ${media.min('md')`
-    padding: clamp(${units(15)}, 9.5vw, 9.5vw) 0 ${units(5)};
+    padding: clamp(${units(15)}, 8vw, 8vw) 0 ${units(12.5)};
   `}
 `;
 
@@ -59,6 +59,7 @@ const StyledBadge = styled(Badge)`
 const Grid = styled.div`
   ${media.min('md')`
     display: grid;
+    grid-column-gap: ${units(2)};
     grid-template-areas:
       'title        title            .'
       '.            descriptionOne   descriptionOne'
