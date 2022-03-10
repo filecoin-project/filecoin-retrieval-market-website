@@ -12,8 +12,8 @@ import ContactsSection from 'src/components/sections/contacts-section';
 import Container from 'src/components/core/layout/container';
 import IntroSection from 'src/components/sections/intro-section';
 import Metatags from 'src/components/core/metatags';
-import NodesSection from 'src/components/sections/nodes-section';
 import React, { ReactElement } from 'react';
+import WhyNowSection from 'src/components/sections/why-now-section';
 import styled from 'styled-components';
 
 /**
@@ -59,15 +59,10 @@ const Home = ({ data }: Props): ReactElement => {
           title={data?.content?.homeDescription}
         />
 
-        <Section id={sectionsIds.sectionWhyNow}>
-          <Container>
-            {'Section Why Now'}
-          </Container>
-        </Section>
-
-        <Section id={sectionsIds.sectionWebNodes}>
-          <NodesSection />
-        </Section>
+        <WhyNowSection
+          id={sectionsIds.sectionWhyNow}
+          title={data?.content?.whyNowDescription}
+        />
 
         <Section id={sectionsIds.sectionWhatWeDo}>
           <Container>
