@@ -4,9 +4,10 @@
  */
 
 import { Meta } from '@storybook/react';
+import { color, units } from '@untile/react-components/dist/styles';
 import { select, text, withKnobs } from '@storybook/addon-knobs';
-import { units } from '@untile/react-components/dist/styles';
 import { withDesign } from 'storybook-addon-designs';
+import ArrowLink from 'src/components/core/links/arrow-link';
 import React, { ReactElement } from 'react';
 import UnderlineLink, { UnderlineLinkSize } from 'src/components/core/links/underline-link';
 import styled from 'styled-components';
@@ -34,6 +35,16 @@ const Container = styled.div`
   margin: auto;
   padding: ${units(8)};
   width: ${units(56)};
+`;
+
+/**
+ * `BgContainer` styled component.
+ */
+
+const BgContainer = styled(Container)`
+  background-color: ${color('white')};
+  display: flex;
+  justify-content: center;
 `;
 
 /**
@@ -71,5 +82,19 @@ export const underlineLink = (): ReactElement => {
         {label}
       </UnderlineLink>
     </Container>
+  );
+};
+
+/**
+ * Export `arrowLink`.
+ */
+
+export const arrowLink = (): ReactElement => {
+  const href = text('Url', 'https://untile.pt/');
+
+  return (
+    <BgContainer>
+      <ArrowLink href={href} />
+    </BgContainer>
   );
 };
