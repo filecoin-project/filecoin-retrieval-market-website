@@ -13,6 +13,7 @@ import Container from 'src/components/core/layout/container';
 import IntroSection from 'src/components/sections/intro-section';
 import Metatags from 'src/components/core/metatags';
 import React, { ReactElement } from 'react';
+import TeamsSection from 'src/components/sections/teams-section';
 import WhatWeDoSection from 'src/components/sections/what-we-do-section';
 import WhyNowSection from 'src/components/sections/why-now-section';
 import styled from 'styled-components';
@@ -79,11 +80,10 @@ const Home = ({ data }: Props): ReactElement => {
           </Container>
         </Section>
 
-        <Section id={sectionsIds.sectionTeams}>
-          <Container>
-            {'Section Teams'}
-          </Container>
-        </Section>
+        <TeamsSection
+          data={data?.teams}
+          id={sectionsIds.sectionTeams}
+        />
 
         <Section id={sectionsIds.sectionRoadmap}>
           <Container>
