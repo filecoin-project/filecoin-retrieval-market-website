@@ -12,6 +12,7 @@ import ContactsSection from 'src/components/sections/contacts-section';
 import Container from 'src/components/core/layout/container';
 import IntroSection from 'src/components/sections/intro-section';
 import Metatags from 'src/components/core/metatags';
+import ProgressSection from 'src/components/sections/progress-section';
 import React, { ReactElement } from 'react';
 import RoadmapSection from 'src/components/sections/roadmap-section';
 import TeamsSection from 'src/components/sections/teams-section';
@@ -69,11 +70,10 @@ const Home = ({ data }: Props): ReactElement => {
 
         <WhatWeDoSection id={sectionsIds.sectionWhatWeDo} />
 
-        <Section id={sectionsIds.sectionProgress}>
-          <Container>
-            {'Section Progress'}
-          </Container>
-        </Section>
+        <ProgressSection
+          data={data?.progress}
+          id={sectionsIds.sectionProgress}
+        />
 
         <Section id={sectionsIds.sectionProjectsAndOpportunities}>
           <Container>
