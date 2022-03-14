@@ -13,6 +13,7 @@ import Container from 'src/components/core/layout/container';
 import IntroSection from 'src/components/sections/intro-section';
 import Metatags from 'src/components/core/metatags';
 import React, { ReactElement } from 'react';
+import RoadmapSection from 'src/components/sections/roadmap-section';
 import TeamsSection from 'src/components/sections/teams-section';
 import WhatWeDoSection from 'src/components/sections/what-we-do-section';
 import WhyNowSection from 'src/components/sections/why-now-section';
@@ -85,11 +86,10 @@ const Home = ({ data }: Props): ReactElement => {
           id={sectionsIds.sectionTeams}
         />
 
-        <Section id={sectionsIds.sectionRoadmap}>
-          <Container>
-            {'Section Roadmap'}
-          </Container>
-        </Section>
+        <RoadmapSection
+          data={data?.roadmap}
+          id={sectionsIds.sectionRoadmap}
+        />
       </BodyGradient>
 
       <ContactsSection
