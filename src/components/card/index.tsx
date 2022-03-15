@@ -31,6 +31,7 @@ type Props = {
 
 const ArrowWrapper = styled.div`
   align-self: flex-start;
+  color: ${color('dark')};
   justify-self: flex-end;
   margin-right: ${units(2.5)};
 `;
