@@ -3,7 +3,7 @@
  * Module dependencies.
  */
 
-import { Svg, color } from '@untile/react-components';
+import { Svg } from '@untile/react-components';
 import { theme } from 'styled-tools';
 import React, { ReactElement } from 'react';
 import arrowIcon from 'src/assets/svg/arrow.svg';
@@ -14,7 +14,6 @@ import styled from 'styled-components';
  */
 
 const VisibleArrow = styled(Svg)`
-  color: ${color('dark')};
   left: 50%;
   position: absolute;
   top: 50%;
@@ -38,7 +37,6 @@ const HiddenArrow = styled(VisibleArrow)`
  */
 
 const Wrapper = styled.div`
-  color: ${color('dark')};
   cursor: pointer;
   display: inline-block;
   height: 30px;
