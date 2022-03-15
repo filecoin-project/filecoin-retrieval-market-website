@@ -31,6 +31,7 @@ export interface ProjectProps {
   tags: string;
   title: string;
   type: 'project' | 'opportunity';
+  url?: string;
 }
 
 /**
