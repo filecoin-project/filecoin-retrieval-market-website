@@ -9,10 +9,10 @@ import { color } from '@untile/react-components';
 import { getRecords } from 'src/core/api/airtable';
 import { sectionsIds } from 'src/core/content-config/navbar';
 import ContactsSection from 'src/components/sections/contacts-section';
-import Container from 'src/components/core/layout/container';
 import IntroSection from 'src/components/sections/intro-section';
 import Metatags from 'src/components/core/metatags';
 import ProgressSection from 'src/components/sections/progress-section';
+import ProjectsOpportunitiesSection from 'src/components/sections/projects-opportunities-section';
 import React, { ReactElement } from 'react';
 import RoadmapSection from 'src/components/sections/roadmap-section';
 import TeamsSection from 'src/components/sections/teams-section';
@@ -27,15 +27,6 @@ import styled from 'styled-components';
 type Props = {
   data: APIResponse
 }
-
-/**
- * `Section` styled component.
- */
-
-const Section = styled.section`
-  min-height: 100vh;
-  position: relative;
-`;
 
 /**
  * `BodyGradient` styled component.
@@ -75,11 +66,10 @@ const Home = ({ data }: Props): ReactElement => {
           id={sectionsIds.sectionProgress}
         />
 
-        <Section id={sectionsIds.sectionProjectsAndOpportunities}>
-          <Container>
-            {'Section Projects and opportunities'}
-          </Container>
-        </Section>
+        <ProjectsOpportunitiesSection
+          data={data?.projectsOpportunities}
+          id={sectionsIds.sectionProjectsAndOpportunities}
+        />
 
         <TeamsSection
           data={data?.teams}
