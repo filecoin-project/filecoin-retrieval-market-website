@@ -25,7 +25,7 @@ export interface ProgressProps {
 export interface ProjectProps {
   active: boolean;
   description: string;
-  label: string;
+  label?: string;
   status: string;
   statusColor: string;
   tags: string;
