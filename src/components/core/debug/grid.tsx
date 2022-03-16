@@ -52,7 +52,7 @@ const Grid = styled.div<Props>`
  */
 
 const Column = styled.div`
-  background-color: ${color.transparentize('primary', 0.05)};
+  background-color: ${color.transparentize('white', 0.05)};
 `;
 
 /**
