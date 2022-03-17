@@ -6,7 +6,7 @@
 import { Node, defaultNodes } from 'src/core/content-config/nodes-section';
 import { colors } from 'src/styles/colors';
 import { getRandomNumber } from 'src/core/utils/numbers';
-import { transparentize } from '@untile/react-components';
+import { transparentize, useBreakpoint } from '@untile/react-components';
 import React, {
   ReactElement,
   useCallback,
@@ -140,6 +140,8 @@ function animateFloatingDot({ height, initialX, initialY, node, width }): Node {
  */
 
 const NodesSection = ({ className }: Props): ReactElement => {
+  const isTablet = useBreakpoint('md', 'max');
+  const isMobile = useBreakpoint('sm', 'max');
   const wrapperRef = useRef<HTMLDivElement>();
   const canvasRef = useRef<HTMLCanvasElement>();
   const [canvas, setCanvas] = useState<Canvas>();
@@ -150,7 +152,9 @@ const NodesSection = ({ className }: Props): ReactElement => {
   const [transitionFade, setTransitionFade] = useState<'increasing' | 'decreasing'>('increasing');
   const [nodes, setNodes] = useState<Node[]>([]);
   const initialNodes = useMemo<Node[]>(() => {
-    return map(defaultNodes, node => {
+    const breakpointType = isMobile && 'mobile' || isTablet && 'tablet' || 'desktop';
+
+    return map(defaultNodes(breakpointType), node => {
       return {
         ...node,
         directionX: getRandomNumber(-1 * floatingSpeed, floatingSpeed),
@@ -159,7 +163,7 @@ const NodesSection = ({ className }: Props): ReactElement => {
         dotY: canvas?.height * 0.05 + canvas?.height * 0.9 * node.dotY / 230
       };
     });
-  }, [canvas?.height, canvas?.width]);
+  }, [canvas?.height, canvas?.width, isMobile, isTablet]);
 
   const handleAnimateFloatingDots = useCallback(() => {
     setNodes(previous => map(previous, (node: Node, index: number) => ({
