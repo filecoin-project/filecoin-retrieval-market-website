@@ -59,24 +59,10 @@ const StyledBadge = styled(Badge)`
 `;
 
 /**
- * `Title` styled component.
- */
-
-const Title = styled(Type.H2)`
-  margin-bottom: ${units(3)};
-
-  ${media.min('md')`
-    margin-bottom: ${units(4.5)};
-  `}
-`;
-
-/**
  * `List` styled component.
  */
 
 const List = styled.div<{ hasBottomMargin?: boolean }>`
-  border-bottom: 1px solid ${color('white')};
-
   ${ifProp('hasBottomMargin', css`
     margin-bottom: ${units(10.5)};
 
@@ -158,11 +144,6 @@ const ItemGrid = styled.div`
 const BorderGrid = styled.div`
   display: grid;
   grid-template-columns: repeat(7, 1fr);
-  margin-bottom: ${units(3)};
-
-  ${media.min('md')`
-    margin-bottom: ${units(5)};
-  `}
 `;
 
 /**
@@ -202,7 +183,11 @@ const ListItem = (props): ReactElement => {
     <Item href={url}>
       <BorderGrid>
         {times(7, (borderIndex: number) => (
-          <Box key={borderIndex}>
+          <Box
+            key={borderIndex}
+            marginBottom={units(3)}
+            marginBottomMd={units(5)}
+          >
             <FadeInUpAnimation
               options={{
                 distance: '60px',
@@ -355,16 +340,35 @@ const ProjectsOpportunitiesSection = ({ data, id }: Props): ReactElement => {
 
       <Container>
         {isTablet && (
-          <StyledBadge variant={'outline'}>
-            {'Progress'}
-          </StyledBadge>
+          <FadeInUpAnimation
+            options={{
+              distance: '100%',
+              transitionTime: 1
+            }}
+          >
+            <StyledBadge variant={'outline'}>
+              {'Progress'}
+            </StyledBadge>
+          </FadeInUpAnimation>
         )}
 
         {!isEmpty(projects) && (
           <>
-            <Title>
-              {'Projects'}
-            </Title>
+            <Box
+              marginBottom={units(3)}
+              marginBottomMd={units(4.5)}
+            >
+              <FadeInUpAnimation
+                options={{
+                  distance: '100%',
+                  transitionTime: 1
+                }}
+              >
+                <Type.H2>
+                  {'Projects'}
+                </Type.H2>
+              </FadeInUpAnimation>
+            </Box>
 
             <List hasBottomMargin={!isEmpty(opportunities)}>
               {map(projects, ({ ...rest }: ProjectProps, indexProjects: number) => (
@@ -373,15 +377,44 @@ const ProjectsOpportunitiesSection = ({ data, id }: Props): ReactElement => {
                   {...rest}
                 />
               ))}
+
+              <BorderGrid>
+                {times(7, (borderIndex: number) => (
+                  <Box key={borderIndex}>
+                    <FadeInUpAnimation
+                      options={{
+                        distance: '60px',
+                        threshold: 0.5,
+                        transitionDelay: 0.1 * borderIndex,
+                        transitionTime: 1
+                      }}
+                    >
+                      <Border />
+                    </FadeInUpAnimation>
+                  </Box>
+                ))}
+              </BorderGrid>
             </List>
           </>
         )}
 
         {!isEmpty(opportunities) && (
           <>
-            <Title>
-              {'Opportunities'}
-            </Title>
+            <Box
+              marginBottom={units(3)}
+              marginBottomMd={units(4.5)}
+            >
+              <FadeInUpAnimation
+                options={{
+                  distance: '100%',
+                  transitionTime: 1
+                }}
+              >
+                <Type.H2>
+                  {'Opportunities'}
+                </Type.H2>
+              </FadeInUpAnimation>
+            </Box>
 
             <List>
               {map(opportunities, ({ ...rest }: ProjectProps, indexOpportunities: number) => (
@@ -390,6 +423,23 @@ const ProjectsOpportunitiesSection = ({ data, id }: Props): ReactElement => {
                   {...rest}
                 />
               ))}
+
+              <BorderGrid>
+                {times(7, (borderIndex: number) => (
+                  <Box key={borderIndex}>
+                    <FadeInUpAnimation
+                      options={{
+                        distance: '60px',
+                        threshold: 0.5,
+                        transitionDelay: 0.1 * borderIndex,
+                        transitionTime: 1
+                      }}
+                    >
+                      <Border />
+                    </FadeInUpAnimation>
+                  </Box>
+                ))}
+              </BorderGrid>
             </List>
           </>
         )}

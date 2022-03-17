@@ -4,11 +4,12 @@
  */
 
 import { Badge } from 'src/components/core/badge';
+import { Box, Type, media, units, useBreakpoint } from '@untile/react-components';
 import { TeamProps } from 'src/types/api';
-import { Type, media, units, useBreakpoint } from '@untile/react-components';
 import { theme } from 'styled-tools';
 import Card from 'src/components/card';
 import Carousel, { Slide } from 'src/components/carousel';
+import FadeInUpAnimation from 'src/components/core/animations/fade-in-up';
 import React, { ReactElement, useMemo, useRef, useState } from 'react';
 import StaticNavbar from 'src/components/static-navbar';
 import filter from 'lodash/filter';
@@ -43,19 +44,12 @@ const Section = styled.section`
  */
 
 const BadgeWrapper = styled.div`
+  margin-bottom: ${units(7)};
   padding: 0 ${theme('grid.gutterMobile')}px;
   
   ${media.min('md')`
     padding: 0 0 0 ${theme('grid.gutter')}px;
   `}
-`;
-
-/**
- * `StyledBadge` styled component.
- */
-
-const StyledBadge = styled(Badge)`
-  margin-bottom: ${units(7)};
 `;
 
 /**
@@ -68,21 +62,6 @@ const Grid = styled.div`
     grid-column-gap: ${units(2)};
     grid-template-areas: 'title .';
     grid-template-columns: repeat(2, 1fr);
-  `}
-`;
-
-/**
- * `Title` styled component.
- */
-
-const Title = styled(Type.H2)`
-  grid-area: title;
-  margin-bottom: ${units(2)};
-  padding: 0 ${theme('grid.gutterMobile')}px;
-  
-  ${media.min('md')`
-    margin-bottom: ${units(4.5)};
-    padding: 0 0 0 ${theme('grid.gutter')}px;
   `}
 `;
 
@@ -155,43 +134,73 @@ const TeamsSection = ({ data, id }: Props): ReactElement | null => {
       {!isTablet && <StaticNavbar activeItem={id} />}
 
       {isTablet && (
-        <BadgeWrapper>
-          <StyledBadge variant={'outline'}>
-            {'Teams'}
-          </StyledBadge>
-        </BadgeWrapper>
+        <FadeInUpAnimation
+          options={{
+            distance: '100%',
+            transitionTime: 1
+          }}
+        >
+          <BadgeWrapper>
+            <Badge variant={'outline'}>
+              {'Teams'}
+            </Badge>
+          </BadgeWrapper>
+        </FadeInUpAnimation>
       )}
 
       <Grid>
-        <Title>
-          {'Many teams are already working on Retrieval Markets.'}
-        </Title>
+        <Box
+          gridAreaMd={'title'}
+          marginBottom={units(2)}
+          marginBottomMd={units(4.5)}
+          padding={'0 15px'}
+          paddingMd={'0 0 0 40px'}
+        >
+          <FadeInUpAnimation
+            options={{
+              distance: '100%',
+              transitionTime: 1
+            }}
+          >
+            <Type.H2>
+              {'Many teams are already working on Retrieval Markets.'}
+            </Type.H2>
+          </FadeInUpAnimation>
+        </Box>
       </Grid>
 
-      <Carousel
-        activeSlide={activeSlide}
-        carouselConfig={carouselConfig}
-        containerModifierClass={'teams'}
-        onSetActiveSlide={setActiveSlide}
-        ref={sliderRef}
-        totalItems={total}
+      <FadeInUpAnimation
+        options={{
+          distance: '50%',
+          threshold: 0.1,
+          transitionTime: 1
+        }}
       >
-        {map(activeCard, (props : TeamProps, index: number) => (
-          <Slide
-            key={index}
-            // @ts-ignore
-            ref={slideRef}
-          >
-            <Card
-              description={props?.description}
-              iconImage={props?.iconImage}
-              subtitle={props?.subtitle}
-              title={props?.title}
-              url={props?.url}
-            />
-          </Slide>
-        ))}
-      </Carousel>
+        <Carousel
+          activeSlide={activeSlide}
+          carouselConfig={carouselConfig}
+          containerModifierClass={'teams'}
+          onSetActiveSlide={setActiveSlide}
+          ref={sliderRef}
+          totalItems={total}
+        >
+          {map(activeCard, (props : TeamProps, index: number) => (
+            <Slide
+              key={index}
+              // @ts-ignore
+              ref={slideRef}
+            >
+              <Card
+                description={props?.description}
+                iconImage={props?.iconImage}
+                subtitle={props?.subtitle}
+                title={props?.title}
+                url={props?.url}
+              />
+            </Slide>
+          ))}
+        </Carousel>
+      </FadeInUpAnimation>
     </Section>
   );
 };

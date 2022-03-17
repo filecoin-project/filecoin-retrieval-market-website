@@ -9,6 +9,7 @@ import { RoadmapProps } from 'src/types/api';
 import { Svg, Type, media, units, useBreakpoint } from '@untile/react-components';
 import { theme } from 'styled-tools';
 import Container from 'src/components/core/layout/container';
+import FadeInUpAnimation from 'src/components/core/animations/fade-in-up';
 import React, { ReactElement, useMemo, useRef, useState } from 'react';
 import Slider, { Slide } from 'src/components/slider';
 import StaticNavbar from 'src/components/static-navbar';
@@ -121,19 +122,12 @@ const Title = styled(Display1)`
  */
 
 const BadgeWrapper = styled.div`
+  margin-bottom: ${units(7)};
   padding: 0 ${theme('grid.gutterMobile')}px;
   
   ${media.min('md')`
     padding: 0 0 0 ${theme('grid.gutter')}px;
   `}
-`;
-
-/**
- * `StyledBadge` styled component.
- */
-
-const StyledBadge = styled(Badge)`
-  margin-bottom: ${units(7)};
 `;
 
 /**
@@ -174,79 +168,94 @@ const RoadmapSection = ({ data, id }: Props): ReactElement | null => {
         {!isTablet && <StaticNavbar activeItem={id} />}
 
         {isTablet && (
-          <BadgeWrapper>
-            <StyledBadge variant={'outline'}>
-              {'Roadmap'}
-            </StyledBadge>
-          </BadgeWrapper>
+          <FadeInUpAnimation
+            options={{
+              distance: '100%',
+              transitionTime: 1
+            }}
+          >
+            <BadgeWrapper>
+              <Badge variant={'outline'}>
+                {'Roadmap'}
+              </Badge>
+            </BadgeWrapper>
+          </FadeInUpAnimation>
         )}
 
         <Container>
-          <Gallery>
-            <Slider
-              activeSlide={activeSlide}
-              autoplay={{
-                delay: 6000,
-                disableOnInteraction: true
-              }}
-              // @ts-ignore
-              containerModifierClass={'roadmap'}
-              onSetActiveSlide={setActiveSlide}
-              parallax
-              ref={sliderRef}
-              showScrollbar
-              slidesPerView={1}
-              speed={slideTransition}
-              totalItems={size(activeItem)}
-            >
-              {map(activeItem, (props: RoadmapProps, index: number) => {
-                const { day, description, month } = props;
+          <FadeInUpAnimation
+            options={{
+              distance: '50%',
+              threshold: 0.1,
+              transitionTime: 1
+            }}
+          >
+            <Gallery>
+              <Slider
+                activeSlide={activeSlide}
+                autoplay={{
+                  delay: 6000,
+                  disableOnInteraction: true
+                }}
+                // @ts-ignore
+                containerModifierClass={'roadmap'}
+                onSetActiveSlide={setActiveSlide}
+                parallax
+                ref={sliderRef}
+                showScrollbar
+                slidesPerView={1}
+                speed={slideTransition}
+                totalItems={size(activeItem)}
+              >
+                {map(activeItem, (props: RoadmapProps, index: number) => {
+                  const { day, description, month } = props;
 
-                return (
-                  <Slide key={index}>
-                    <Grid>
-                      <Title
-                        data-swiper-parallax={-100}
-                        gridArea={'month'}
-                        gridRow={'1 / 3'}
-                      >
-                        {isMobile && month.length > 3 ? concat(slice(month, 0, 3), '.') : month}
-                      </Title>
+                  return (
+                    <Slide key={index}>
+                      <Grid>
+                        <Title
+                          data-swiper-parallax={-100}
+                          gridArea={'month'}
+                          gridRow={'1 / 3'}
+                        >
+                          {isMobile && month.length > 3 ? concat(slice(month, 0, 3), '.') : month}
+                        </Title>
 
-                      <Title
-                        data-swiper-parallax={-750}
-                        gridArea={'day'}
-                        gridRow={'2 / 4'}
-                        gridRowLg={'2 / 6'}
-                        marginBottom={units(6.5)}
-                        marginBottomLg={0}
-                      >
-                        {day}
-                      </Title>
+                        <Title
+                          data-swiper-parallax={-750}
+                          gridArea={'day'}
+                          gridRow={'2 / 4'}
+                          gridRowLg={'2 / 6'}
+                          marginBottom={units(6.5)}
+                          marginBottomLg={0}
+                        >
+                          {day}
+                        </Title>
 
-                      <Type.H3
-                        gridArea={'description'}
-                        gridRow={'4 / 5'}
-                      >
-                        {description}
-                      </Type.H3>
-                    </Grid>
-                  </Slide>
-                );
-              })}
-            </Slider>
+                        <Type.H3
+                          gridArea={'description'}
+                          gridRow={'4 / 5'}
+                        >
+                          {description}
+                        </Type.H3>
+                      </Grid>
+                    </Slide>
+                  );
+                })}
+              </Slider>
 
-            <SwipeWrapper>
-              <Type.H4>
-                {'Swipe'}
-              </Type.H4>
+              <SwipeWrapper>
+                <Type.H4>
+                  {'Swipe'}
+                </Type.H4>
 
-              <Svg
-                icon={arrowRightIcon}
-                size={units(7.5)}
-              />
-            </SwipeWrapper>
-          </Gallery>
+                <Svg
+                  icon={arrowRightIcon}
+                  size={units(7.5)}
+                />
+              </SwipeWrapper>
+            </Gallery>
+          </FadeInUpAnimation>
         </Container>
       </Section>
     </>

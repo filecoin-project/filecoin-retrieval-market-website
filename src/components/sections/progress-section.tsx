@@ -193,9 +193,16 @@ const ProgressSection = ({ data, id }: Props): ReactElement => {
 
       <Container>
         {isTablet && (
-          <StyledBadge variant={'outline'}>
-            {'Progress'}
-          </StyledBadge>
+          <FadeInUpAnimation
+            options={{
+              distance: '100%',
+              transitionTime: 1
+            }}
+          >
+            <StyledBadge variant={'outline'}>
+              {'Progress'}
+            </StyledBadge>
+          </FadeInUpAnimation>
         )}
 
         <ul>

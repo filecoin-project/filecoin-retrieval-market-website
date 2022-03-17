@@ -5,6 +5,7 @@
 
 import { Badge } from 'src/components/core/badge';
 import {
+  Box,
   RawHtml,
   Type,
   color,
@@ -16,6 +17,7 @@ import {
 import { ifProp, theme } from 'styled-tools';
 import { useInView } from 'react-intersection-observer';
 import Container from 'src/components/core/layout/container';
+import FadeInUpAnimation from 'src/components/core/animations/fade-in-up';
 import NodesSection from './nodes-section';
 import React, { ReactElement } from 'react';
 import StaticNavbar from 'src/components/static-navbar';
@@ -68,32 +70,6 @@ const Grid = styled.div`
       'nodesSection nodesSection     nodesSection'
       '.            descriptionThree descriptionThree';
     grid-template-columns: 5fr 2fr 5fr;
-  `}
-`;
-
-/**
- * `Title` styled component.
- */
-
-const Title = styled(Type.H2)`
-  grid-area: title;
-  margin-bottom: ${units(3)};
-  
-  ${media.min('md')`
-    margin-bottom: ${units(12)};
-  `}
-`;
-
-/**
- * `StyledNodesSection` styled component.
- */
-
-const StyledNodesSection = styled(NodesSection)`
-  grid-area: nodesSection;
-  margin-bottom: ${units(7)};
-
-  ${media.min('md')`
-    margin-bottom: ${units(18.5)};
   `}
 `;
 
@@ -197,13 +173,6 @@ const Label = styled(Type.H3)<{ isVisible?: boolean }>`
  */
 
 const Highlight = styled(Type.H3)`
-  grid-area: descriptionOne;
-  margin-bottom: ${units(7)};
-
-  ${media.min('md')`
-    margin-bottom: ${units(6)};
-  `}
-
   > span {
     cursor: default;
     transition: ${theme('animations.defaultTransition')};
@@ -233,19 +202,52 @@ const WhyNowSection = ({ id, title }: Props): ReactElement => {
 
       <Container>
         {isTablet && (
-          <StyledBadge variant={'outline'}>
-            {'Why Now'}
-          </StyledBadge>
+          <FadeInUpAnimation
+            options={{
+              distance: '100%',
+              transitionTime: 1
+            }}
+          >
+            <StyledBadge variant={'outline'}>
+              {'Why Now'}
+            </StyledBadge>
+          </FadeInUpAnimation>
         )}
 
         <Grid>
-          <Title>
-            {title}
-          </Title>
+          <Box
+            gridAreaMd={'title'}
+            marginBottom={units(3)}
+            marginBottomMd={units(12)}
+          >
+            <FadeInUpAnimation
+              options={{
+                distance: '50%',
+                transitionTime: 1
+              }}
+            >
+              <Type.H2>
+                {title}
+              </Type.H2>
+            </FadeInUpAnimation>
+          </Box>
 
-          <RawHtml element={Highlight}>
-            {'By <span>2025</span> the global CDN market is expected to be twice as large as the cloud object storage market.'}
-          </RawHtml>
+          <Box
+            gridAreaMd={'descriptionOne'}
+            marginBottom={units(7)}
+            marginBottomMd={units(6)}
+          >
+            <FadeInUpAnimation
+              options={{
+                distance: '100%',
+                transitionTime: 1
+              }}
+            >
+              <RawHtml element={Highlight}>
+                {'By <span>2025</span> the global CDN market is expected to be twice as large as the cloud object storage market.'}
+              </RawHtml>
+            </FadeInUpAnimation>
+          </Box>
 
           <AnimatedGridWrapper>
             {!isTablet && (
@@ -291,19 +293,51 @@ const WhyNowSection = ({ id, title }: Props): ReactElement => {
             )}
           </AnimatedGridWrapper>
 
-          <Type.H3
-            gridArea={'descriptionTwo'}
+          <Box
+            gridAreaMd={'descriptionTwo'}
             marginBottom={units(7)}
             marginBottomMd={units(11)}
           >
-            {'That is, delivering files to be people quickly and reliably is a bigger market than storing those files in the first place. This makes sense since we all expect video, and image feeds to load instantly wherever we are in the world.'}
-          </Type.H3>
+            <FadeInUpAnimation
+              options={{
+                distance: '100%',
+                transitionTime: 1
+              }}
+            >
+              <Type.H3>
+                {'That is, delivering files to be people quickly and reliably is a bigger market than storing those files in the first place. This makes sense since we all expect video, and image feeds to load instantly wherever we are in the world.'}
+              </Type.H3>
+            </FadeInUpAnimation>
+          </Box>
 
-          <StyledNodesSection />
+          <Box
+            gridAreaMd={'nodesSection'}
+            marginBottom={units(7)}
+            marginBottomMd={units(18.5)}
+          >
+            <FadeInUpAnimation
+              options={{
+                distance: '50%',
+                threshold: 0.1,
+                transitionTime: 1
+              }}
+            >
+              <NodesSection />
+            </FadeInUpAnimation>
+          </Box>
 
-          <Type.H3 gridArea={'descriptionThree'}>
-            {'Not only is a decentralised CDN essential for the Web3 movement, it can also provide some efficiencies that are not within easy reach for traditional CDNs like Cloudflare and Akamai. p2p content sharing, especially in the “last mile”, and the ability of nodes emerging in sparely populated geographies are a few such efficiencies.'}
-          </Type.H3>
+          <Box gridAreaMd={'descriptionThree'}>
+            <FadeInUpAnimation
+              options={{
+                distance: '100%',
+                transitionTime: 1
+              }}
+            >
+              <Type.H3>
+                {'Not only is a decentralised CDN essential for the Web3 movement, it can also provide some efficiencies that are not within easy reach for traditional CDNs like Cloudflare and Akamai. p2p content sharing, especially in the “last mile”, and the ability of nodes emerging in sparely populated geographies are a few such efficiencies.'}
+              </Type.H3>
+            </FadeInUpAnimation>
+          </Box>
         </Grid>
       </Container>
     </Section>

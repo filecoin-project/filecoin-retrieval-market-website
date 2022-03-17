@@ -6,9 +6,12 @@
 import { Svg, Type, color, media, units, useBreakpoint } from '@untile/react-components';
 import { colors } from 'src/styles/colors';
 import { ifProp, theme } from 'styled-tools';
+import { useRouter } from 'next/router';
 import Container from 'src/components/core/layout/container';
 import DotsGrid from 'src/components/dots-grid';
 import DotsGridSection from './dots-grid-section';
+import FadeInAnimation from 'src/components/core/animations/fade-in';
+import FadeInUpAnimation from '../core/animations/fade-in-up';
 import React, { ReactElement, useCallback } from 'react';
 import arrowDown from 'src/assets/svg/arrow-down.svg';
 import isEmpty from 'lodash/isEmpty';
@@ -72,6 +75,7 @@ const DotsGridWrapper = styled.div`
 
 const Content = styled.div`
   padding: clamp(${units(14.5)}, 31vw, 31vw)  0 ${units(2.5)};
+  pointer-events: none;
 
   ${media.min('md')`
     padding: clamp(${units(15)}, 9.5vw, 9.5vw) 0 ${units(5)};
@@ -166,6 +170,7 @@ const LabelWrapper = styled.div`
 
 const IntroSection = ({ id, nextSectionId, title }: Props): ReactElement => {
   const isTablet = useBreakpoint('lg', 'max');
+  const { isReady } = useRouter();
   const handleClickAnchor = useCallback(() => {
     const element = document.getElementById(nextSectionId);
 
@@ -187,30 +192,49 @@ const IntroSection = ({ id, nextSectionId, title }: Props): ReactElement => {
         )}
 
         <Content>
-          <Title>
-            {title}
-          </Title>
+          {isReady && (
+            <FadeInUpAnimation
+              options={{
+                distance: '25%',
+                transitionDelay: 0.7,
+                transitionTime: 1
+              }}
+            >
+              <Title>
+                {title}
+              </Title>
+            </FadeInUpAnimation>
+          )}
         </Content>
 
-        <ScrollDown
-          hasLink={!isEmpty(nextSectionId)}
-          onClick={handleClickAnchor}
-        >
-          <LabelWrapper>
-            <HiddenLabel>
-              {'Scroll'}
-            </HiddenLabel>
+        {isReady && (
+          <FadeInAnimation
+            options={{
+              transitionDelay: 0.5,
+              transitionTime: 1
+            }}
+          >
+            <ScrollDown
+              hasLink={!isEmpty(nextSectionId)}
+              onClick={handleClickAnchor}
+            >
+              <LabelWrapper>
+                <HiddenLabel>
+                  {'Scroll'}
+                </HiddenLabel>
 
-            <VisibleLabel>
-              {'Scroll'}
-            </VisibleLabel>
-          </LabelWrapper>
+                <VisibleLabel>
+                  {'Scroll'}
+                </VisibleLabel>
+              </LabelWrapper>
 
-          <Svg
-            icon={arrowDown}
-            size={'14px'}
-          />
-        </ScrollDown>
+              <Svg
+                icon={arrowDown}
+                size={'14px'}
+              />
+            </ScrollDown>
+          </FadeInAnimation>
+        )}
       </Container>
     </Section>
   );
