@@ -1,10 +1,12 @@
 
 /**
- * Constants.
+ * Radius size.
  */
 
-const bigRadius = 10;
-const smallRadius = 5;
+const radiusSize = {
+  big: [10, 5, 3],
+  small: [5, 3, 1.5]
+};
 
 /**
  * Export `Node` type.
@@ -23,14 +25,37 @@ export type Node = {
 }
 
 /**
+ * `BreakpointType` type.
+ */
+
+type BreakpointType = 'desktop' | 'tablet' | 'mobile';
+
+/**
+ * Get radius.
+ */
+
+function getRadius(type: BreakpointType, size: 'big' | 'small'): number {
+  switch (type) {
+    case 'tablet':
+      return radiusSize[size][1];
+
+    case 'mobile':
+      return radiusSize[size][2];
+
+    default:
+      return radiusSize[size][0];
+  }
+}
+
+/**
  * Export `defaultNodes`.
  */
 
-export const defaultNodes: Node[] = [{
+export const defaultNodes = (breakpointType: BreakpointType): Node[] => [{
   dotX: 27,
   dotY: 184,
   id: '1.0',
-  radius: bigRadius,
+  radius: getRadius(breakpointType, 'big'),
   type: 'node'
 }, {
   connections: ['1.0'],
@@ -38,7 +63,7 @@ export const defaultNodes: Node[] = [{
   dotY: 155,
   id: '1.1',
   laterConnections: ['2.1', '3.1'],
-  radius: smallRadius,
+  radius: getRadius(breakpointType, 'small'),
   type: 'subnode'
 }, {
   connections: ['1.0'],
@@ -46,7 +71,7 @@ export const defaultNodes: Node[] = [{
   dotY: 185,
   id: '1.2',
   laterConnections: ['1.1', '1.3', '2.1'],
-  radius: smallRadius,
+  radius: getRadius(breakpointType, 'small'),
   type: 'subnode'
 }, {
   connections: ['1.0'],
@@ -54,21 +79,21 @@ export const defaultNodes: Node[] = [{
   dotY: 225,
   id: '1.3',
   laterConnections: ['3.4'],
-  radius: smallRadius,
+  radius: getRadius(breakpointType, 'small'),
   type: 'subnode'
 }, {
   connections: ['3.0'],
   dotX: 57,
   dotY: 77,
   id: '2.0',
-  radius: bigRadius,
+  radius: getRadius(breakpointType, 'big'),
   type: 'node'
 }, {
   connections: ['2.0'],
   dotX: 2,
   dotY: 84,
   id: '2.1',
-  radius: smallRadius,
+  radius: getRadius(breakpointType, 'small'),
   type: 'subnode'
 }, {
   connections: ['2.0'],
@@ -76,7 +101,7 @@ export const defaultNodes: Node[] = [{
   dotY: 52,
   id: '2.2',
   laterConnections: ['2.1'],
-  radius: smallRadius,
+  radius: getRadius(breakpointType, 'small'),
   type: 'subnode'
 }, {
   connections: ['2.0'],
@@ -84,7 +109,7 @@ export const defaultNodes: Node[] = [{
   dotY: 2,
   id: '2.3',
   laterConnections: ['2.2'],
-  radius: smallRadius,
+  radius: getRadius(breakpointType, 'small'),
   type: 'subnode'
 }, {
   connections: ['2.0'],
@@ -92,7 +117,7 @@ export const defaultNodes: Node[] = [{
   dotY: 43,
   id: '2.4',
   laterConnections: ['2.3', '5.2'],
-  radius: smallRadius,
+  radius: getRadius(breakpointType, 'small'),
   type: 'subnode'
 }, {
   connections: ['1.0', '4.0'],
@@ -100,7 +125,7 @@ export const defaultNodes: Node[] = [{
   dotY: 148,
   id: '3.0',
   laterConnections: ['2.0'],
-  radius: bigRadius,
+  radius: getRadius(breakpointType, 'big'),
   type: 'node'
 }, {
   connections: ['3.0'],
@@ -108,7 +133,7 @@ export const defaultNodes: Node[] = [{
   dotY: 128,
   id: '3.1',
   laterConnections: ['2.0', '2.1'],
-  radius: smallRadius,
+  radius: getRadius(breakpointType, 'small'),
   type: 'subnode'
 }, {
   connections: ['3.0'],
@@ -116,7 +141,7 @@ export const defaultNodes: Node[] = [{
   dotY: 103,
   id: '3.2',
   laterConnections: ['2.0', '5.0', '5.2'],
-  radius: smallRadius,
+  radius: getRadius(breakpointType, 'small'),
   type: 'subnode'
 }, {
   connections: ['3.0'],
@@ -124,7 +149,7 @@ export const defaultNodes: Node[] = [{
   dotY: 171,
   id: '3.3',
   laterConnections: ['3.4', '4.2', '4.3'],
-  radius: smallRadius,
+  radius: getRadius(breakpointType, 'small'),
   type: 'subnode'
 }, {
   connections: ['3.0'],
@@ -132,14 +157,14 @@ export const defaultNodes: Node[] = [{
   dotY: 197,
   id: '3.4',
   laterConnections: ['4.3'],
-  radius: smallRadius,
+  radius: getRadius(breakpointType, 'small'),
   type: 'subnode'
 }, {
   dotX: 209,
   dotY: 159,
   id: '4.0',
   laterConnections: ['6.0'],
-  radius: bigRadius,
+  radius: getRadius(breakpointType, 'big'),
   type: 'node'
 }, {
   connections: ['4.0'],
@@ -147,7 +172,7 @@ export const defaultNodes: Node[] = [{
   dotY: 138,
   id: '4.1',
   laterConnections: ['5.0', '6.1'],
-  radius: smallRadius,
+  radius: getRadius(breakpointType, 'small'),
   type: 'subnode'
 }, {
   connections: ['4.0'],
@@ -155,7 +180,7 @@ export const defaultNodes: Node[] = [{
   dotY: 170,
   id: '4.2',
   laterConnections: ['4.3'],
-  radius: smallRadius,
+  radius: getRadius(breakpointType, 'small'),
   type: 'subnode'
 }, {
   connections: ['4.0'],
@@ -163,7 +188,7 @@ export const defaultNodes: Node[] = [{
   dotY: 221,
   id: '4.3',
   laterConnections: ['4.4'],
-  radius: smallRadius,
+  radius: getRadius(breakpointType, 'small'),
   type: 'subnode'
 }, {
   connections: ['4.0'],
@@ -171,14 +196,14 @@ export const defaultNodes: Node[] = [{
   dotY: 167,
   id: '4.4',
   laterConnections: ['8.2'],
-  radius: smallRadius,
+  radius: getRadius(breakpointType, 'small'),
   type: 'subnode'
 }, {
   connections: ['4.0'],
   dotX: 147,
   dotY: 121,
   id: '5.0',
-  radius: bigRadius,
+  radius: getRadius(breakpointType, 'big'),
   type: 'node'
 }, {
   connections: ['5.0'],
@@ -186,7 +211,7 @@ export const defaultNodes: Node[] = [{
   dotY: 135,
   id: '5.1',
   laterConnections: ['3.0'],
-  radius: smallRadius,
+  radius: getRadius(breakpointType, 'small'),
   type: 'subnode'
 }, {
   connections: ['5.0'],
@@ -194,13 +219,13 @@ export const defaultNodes: Node[] = [{
   dotY: 78,
   id: '5.2',
   laterConnections: ['6.2'],
-  radius: smallRadius,
+  radius: getRadius(breakpointType, 'small'),
   type: 'subnode'
 }, {
   dotX: 277,
   dotY: 105,
   id: '6.0',
-  radius: bigRadius,
+  radius: getRadius(breakpointType, 'big'),
   type: 'node'
 }, {
   connections: ['6.0'],
@@ -208,7 +233,7 @@ export const defaultNodes: Node[] = [{
   dotY: 115,
   id: '6.1',
   laterConnections: ['5.0', '6.2'],
-  radius: smallRadius,
+  radius: getRadius(breakpointType, 'small'),
   type: 'subnode'
 }, {
   connections: ['6.0'],
@@ -216,14 +241,14 @@ export const defaultNodes: Node[] = [{
   dotY: 74,
   id: '6.2',
   laterConnections: ['7.1'],
-  radius: smallRadius,
+  radius: getRadius(breakpointType, 'small'),
   type: 'subnode'
 }, {
   connections: ['6.0'],
   dotX: 296,
   dotY: 58,
   id: '7.0',
-  radius: bigRadius,
+  radius: getRadius(breakpointType, 'big'),
   type: 'node'
 }, {
   connections: ['7.0'],
@@ -231,7 +256,7 @@ export const defaultNodes: Node[] = [{
   dotY: 0,
   id: '7.1',
   laterConnections: ['2.4'],
-  radius: smallRadius,
+  radius: getRadius(breakpointType, 'small'),
   type: 'subnode'
 }, {
   connections: ['7.0'],
@@ -239,7 +264,7 @@ export const defaultNodes: Node[] = [{
   dotY: 2,
   id: '7.2',
   laterConnections: ['7.1', '7.3', '10.3'],
-  radius: smallRadius,
+  radius: getRadius(breakpointType, 'small'),
   type: 'subnode'
 }, {
   connections: ['7.0'],
@@ -247,14 +272,14 @@ export const defaultNodes: Node[] = [{
   dotY: 43,
   id: '7.3',
   laterConnections: ['10.2'],
-  radius: smallRadius,
+  radius: getRadius(breakpointType, 'small'),
   type: 'subnode'
 }, {
   connections: ['6.0'],
   dotX: 384,
   dotY: 161,
   id: '8.0',
-  radius: bigRadius,
+  radius: getRadius(breakpointType, 'big'),
   type: 'node'
 }, {
   connections: ['8.0'],
@@ -262,7 +287,7 @@ export const defaultNodes: Node[] = [{
   dotY: 174,
   id: '8.1',
   laterConnections: ['4.3', '4.4', '9.5'],
-  radius: smallRadius,
+  radius: getRadius(breakpointType, 'small'),
   type: 'subnode'
 }, {
   connections: ['8.0'],
@@ -270,7 +295,7 @@ export const defaultNodes: Node[] = [{
   dotY: 146,
   id: '8.2',
   laterConnections: ['6.0'],
-  radius: smallRadius,
+  radius: getRadius(breakpointType, 'small'),
   type: 'subnode'
 }, {
   connections: ['8.0'],
@@ -278,7 +303,7 @@ export const defaultNodes: Node[] = [{
   dotY: 123,
   id: '8.3',
   laterConnections: ['8.4', '10.2'],
-  radius: smallRadius,
+  radius: getRadius(breakpointType, 'small'),
   type: 'subnode'
 }, {
   connections: ['8.0'],
@@ -286,7 +311,7 @@ export const defaultNodes: Node[] = [{
   dotY: 90,
   id: '8.4',
   laterConnections: ['10.1'],
-  radius: smallRadius,
+  radius: getRadius(breakpointType, 'small'),
   type: 'subnode'
 }, {
   connections: ['8.0'],
@@ -294,14 +319,14 @@ export const defaultNodes: Node[] = [{
   dotY: 111,
   id: '8.5',
   laterConnections: ['8.4', '9.2', '12.2'],
-  radius: smallRadius,
+  radius: getRadius(breakpointType, 'small'),
   type: 'subnode'
 }, {
   connections: ['11.0'],
   dotX: 457,
   dotY: 199,
   id: '9.0',
-  radius: bigRadius,
+  radius: getRadius(breakpointType, 'big'),
   type: 'node'
 }, {
   connections: ['8.0', '9.0'],
@@ -309,7 +334,7 @@ export const defaultNodes: Node[] = [{
   dotY: 197,
   id: '9.1',
   laterConnections: ['9.5'],
-  radius: smallRadius,
+  radius: getRadius(breakpointType, 'small'),
   type: 'subnode'
 }, {
   connections: ['9.0'],
@@ -317,7 +342,7 @@ export const defaultNodes: Node[] = [{
   dotY: 174,
   id: '9.2',
   laterConnections: ['12.1'],
-  radius: smallRadius,
+  radius: getRadius(breakpointType, 'small'),
   type: 'subnode'
 }, {
   connections: ['9.0'],
@@ -325,7 +350,7 @@ export const defaultNodes: Node[] = [{
   dotY: 205,
   id: '9.3',
   laterConnections: ['13.2'],
-  radius: smallRadius,
+  radius: getRadius(breakpointType, 'small'),
   type: 'subnode'
 }, {
   connections: ['9.0'],
@@ -333,14 +358,14 @@ export const defaultNodes: Node[] = [{
   dotY: 230,
   id: '9.4',
   laterConnections: ['9.3', '9.5', '13.1'],
-  radius: smallRadius,
+  radius: getRadius(breakpointType, 'small'),
   type: 'subnode'
 }, {
   connections: ['9.0'],
   dotX: 445,
   dotY: 230,
   id: '9.5',
-  radius: smallRadius,
+  radius: getRadius(breakpointType, 'small'),
   type: 'subnode'
 }, {
   connections: ['12.0'],
@@ -348,7 +373,7 @@ export const defaultNodes: Node[] = [{
   dotY: 33,
   id: '10.0',
   laterConnections: ['12.3', '14.1'],
-  radius: bigRadius,
+  radius: getRadius(breakpointType, 'big'),
   type: 'node'
 }, {
   connections: ['10.0'],
@@ -356,7 +381,7 @@ export const defaultNodes: Node[] = [{
   dotY: 78,
   id: '10.1',
   laterConnections: ['10.2', '12.2'],
-  radius: smallRadius,
+  radius: getRadius(breakpointType, 'small'),
   type: 'subnode'
 }, {
   connections: ['10.0'],
@@ -364,14 +389,14 @@ export const defaultNodes: Node[] = [{
   dotY: 76,
   id: '10.2',
   laterConnections: ['10.3'],
-  radius: smallRadius,
+  radius: getRadius(breakpointType, 'small'),
   type: 'subnode'
 }, {
   connections: ['10.0'],
   dotX: 377,
   dotY: 33,
   id: '10.3',
-  radius: smallRadius,
+  radius: getRadius(breakpointType, 'small'),
   type: 'subnode'
 }, {
   connections: ['10.0'],
@@ -379,7 +404,7 @@ export const defaultNodes: Node[] = [{
   dotY: 10,
   id: '10.4',
   laterConnections: ['14.1'],
-  radius: smallRadius,
+  radius: getRadius(breakpointType, 'small'),
   type: 'subnode'
 }, {
   connections: ['9.0', '12.0'],
@@ -387,7 +412,7 @@ export const defaultNodes: Node[] = [{
   dotY: 152,
   id: '11.0',
   laterConnections: ['13.3'],
-  radius: bigRadius,
+  radius: getRadius(breakpointType, 'big'),
   type: 'node'
 }, {
   connections: ['11.0'],
@@ -395,13 +420,13 @@ export const defaultNodes: Node[] = [{
   dotY: 157,
   id: '11.1',
   laterConnections: ['12.1'],
-  radius: smallRadius,
+  radius: getRadius(breakpointType, 'small'),
   type: 'subnode'
 }, {
   dotX: 506,
   dotY: 110,
   id: '12.0',
-  radius: bigRadius,
+  radius: getRadius(breakpointType, 'big'),
   type: 'node'
 }, {
   connections: ['12.0'],
@@ -409,7 +434,7 @@ export const defaultNodes: Node[] = [{
   dotY: 142,
   id: '12.1',
   laterConnections: ['12.2'],
-  radius: smallRadius,
+  radius: getRadius(breakpointType, 'small'),
   type: 'subnode'
 }, {
   connections: ['12.0'],
@@ -417,21 +442,21 @@ export const defaultNodes: Node[] = [{
   dotY: 116,
   id: '12.2',
   laterConnections: ['12.3'],
-  radius: smallRadius,
+  radius: getRadius(breakpointType, 'small'),
   type: 'subnode'
 }, {
   connections: ['12.0'],
   dotX: 464,
   dotY: 97,
   id: '12.3',
-  radius: smallRadius,
+  radius: getRadius(breakpointType, 'small'),
   type: 'subnode'
 }, {
   connections: ['12.0'],
   dotX: 543,
   dotY: 182,
   id: '13.0',
-  radius: bigRadius,
+  radius: getRadius(breakpointType, 'big'),
   type: 'node'
 }, {
   connections: ['13.0'],
@@ -439,7 +464,7 @@ export const defaultNodes: Node[] = [{
   dotY: 197,
   id: '13.1',
   laterConnections: ['13.2', '13.4'],
-  radius: smallRadius,
+  radius: getRadius(breakpointType, 'small'),
   type: 'subnode'
 }, {
   connections: ['13.0'],
@@ -447,14 +472,14 @@ export const defaultNodes: Node[] = [{
   dotY: 199,
   id: '13.2',
   laterConnections: ['13.3'],
-  radius: smallRadius,
+  radius: getRadius(breakpointType, 'small'),
   type: 'subnode'
 }, {
   connections: ['13.0'],
   dotX: 508,
   dotY: 160,
   id: '13.3',
-  radius: smallRadius,
+  radius: getRadius(breakpointType, 'small'),
   type: 'subnode'
 }, {
   connections: ['13.0'],
@@ -462,21 +487,21 @@ export const defaultNodes: Node[] = [{
   dotY: 138,
   id: '13.4',
   laterConnections: ['14.0'],
-  radius: smallRadius,
+  radius: getRadius(breakpointType, 'small'),
   type: 'subnode'
 }, {
   connections: ['12.0'],
   dotX: 550,
   dotY: 89,
   id: '14.0',
-  radius: bigRadius,
+  radius: getRadius(breakpointType, 'big'),
   type: 'node'
 }, {
   connections: ['14.0'],
   dotX: 517,
   dotY: 76,
   id: '14.1',
-  radius: smallRadius,
+  radius: getRadius(breakpointType, 'small'),
   type: 'subnode'
 }, {
   connections: ['14.0'],
@@ -484,6 +509,6 @@ export const defaultNodes: Node[] = [{
   dotY: 62,
   id: '14.2',
   laterConnections: ['14.1'],
-  radius: smallRadius,
+  radius: getRadius(breakpointType, 'small'),
   type: 'subnode'
 }];
