@@ -19,7 +19,6 @@ import GridDebug from 'src/components/core/debug/grid';
 import Head from 'next/head';
 import Navbar from 'src/components/navbar';
 import React, { ReactElement, useEffect } from 'react';
-import Script from 'next/script';
 import packageJson from 'package.json';
 
 /**
@@ -121,13 +120,6 @@ const PageApp = (props: AppProps): ReactElement => {
           name={'theme-color'}
         />
       </Head>
-
-      <Script
-        id={'scroll-restoration'}
-        strategy={'beforeInteractive'}
-      >
-        {`history.scrollRestoration = "manual"`}
-      </Script>
 
       <ThemeProvider theme={createTheme(theme)}>
         <UntileGlobalStyle />
