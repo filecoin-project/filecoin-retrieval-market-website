@@ -4,8 +4,9 @@
  */
 
 import { Badge } from 'src/components/core/badge';
-import { Type, media, units, useBreakpoint } from '@untile/react-components';
+import { Box, Type, media, units, useBreakpoint } from '@untile/react-components';
 import Container from 'src/components/core/layout/container';
+import FadeInUpAnimation from 'src/components/core/animations/fade-in-up';
 import React, { ReactElement } from 'react';
 import StaticNavbar from 'src/components/static-navbar';
 import styled from 'styled-components';
@@ -55,19 +56,6 @@ const Grid = styled.div`
 `;
 
 /**
- * `Title` styled component.
- */
-
-const Title = styled(Type.H2)`
-  grid-area: title;
-  margin-bottom: ${units(3.5)};
-  
-  ${media.min('md')`
-    margin-bottom: ${units(4.5)};
-  `}
-`;
-
-/**
  * `WhatWeDoSection` component.
  */
 
@@ -80,19 +68,48 @@ const WhatWeDoSection = ({ id }: Props): ReactElement => {
 
       <Container>
         {isTablet && (
-          <StyledBadge variant={'outline'}>
-            {'What we do'}
-          </StyledBadge>
+          <FadeInUpAnimation
+            options={{
+              distance: '100%',
+              transitionTime: 1
+            }}
+          >
+            <StyledBadge variant={'outline'}>
+              {'What we do'}
+            </StyledBadge>
+          </FadeInUpAnimation>
         )}
 
         <Grid>
-          <Title>
-            {'The Filecoin Retrieval Market initiative is building a decentralised CDN for the Filecoin Network.'}
-          </Title>
+          <Box
+            gridAreaMd={'title'}
+            marginBottom={units(3.5)}
+            marginBottomMd={units(4.5)}
+          >
+            <FadeInUpAnimation
+              options={{
+                distance: '50%',
+                transitionTime: 1
+              }}
+            >
+              <Type.H2>
+                {'The Filecoin Retrieval Market initiative is building a decentralised CDN for the Filecoin Network.'}
+              </Type.H2>
+            </FadeInUpAnimation>
+          </Box>
 
-          <Type.H3 gridArea={'description'}>
-            {'The approach to do this is in a modular way with many teams contributing. The Retrieval Market Working Group (RMWG) consists of teams tackling challenging problems in the space, ranging from ultra fast payments, to data transfer protocol enhancements and cryptoeconomic models for data retrieval.'}
-          </Type.H3>
+          <Box gridAreaMd={'description'}>
+            <FadeInUpAnimation
+              options={{
+                distance: '50%',
+                transitionTime: 1
+              }}
+            >
+              <Type.H3>
+                {'The approach to do this is in a modular way with many teams contributing. The Retrieval Market Working Group (RMWG) consists of teams tackling challenging problems in the space, ranging from ultra fast payments, to data transfer protocol enhancements and cryptoeconomic models for data retrieval.'}
+              </Type.H3>
+            </FadeInUpAnimation>
+          </Box>
         </Grid>
       </Container>
     </Section>
