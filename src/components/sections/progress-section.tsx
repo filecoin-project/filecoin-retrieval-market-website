@@ -6,22 +6,18 @@
 import { Badge } from 'src/components/core/badge';
 import { Display2 } from 'src/components/core/typography';
 import { ProgressProps } from 'src/types/api';
-import {
-  Type,
-  color,
-  media,
-  units,
-  useBreakpoint
-} from '@untile/react-components';
-
+import { Type, media, units, useBreakpoint } from '@untile/react-components';
 import { useInView } from 'react-intersection-observer';
 import AnimatedNumber from 'react-animated-number';
+import Border from 'src/components/border';
 import Container from 'src/components/core/layout/container';
+import FadeInUpAnimation from 'src/components/core/animations/fade-in-up';
 import React, { ReactElement, useEffect, useMemo, useState } from 'react';
 import StaticNavbar from 'src/components/static-navbar';
 import filter from 'lodash/filter';
 import map from 'lodash/map';
 import styled from 'styled-components';
+import times from 'lodash/times';
 
 /**
  * `Props` type.
@@ -54,19 +50,10 @@ const StyledBadge = styled(Badge)`
 `;
 
 /**
- * `List` styled component.
- */
-
-const List = styled.ul`
-  border-top: 1px solid ${color('white')};
-`;
-
-/**
  * `Item` styled component.
  */
 
-const Item = styled.li`
-  border-bottom: 1px solid ${color('white')};
+const Item = styled.div`
   min-height: ${units(30)};
   overflow: hidden;
 
@@ -91,7 +78,7 @@ const Amount = styled(Display2)`
  * `Description` styled component.
  */
 
-const Description = styled(Type.H3)`
+const Description = styled.div`
   ${media.max('md')`
     position: relative;
     top: -22px;
@@ -100,6 +87,15 @@ const Description = styled(Type.H3)`
   ${media.min('md')`
     padding: 18px 0;
   `}
+`;
+
+/**
+ * `BorderGrid` styled component.
+ */
+
+const BorderGrid = styled.div`
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
 `;
 
 /**
@@ -134,21 +130,50 @@ const ListItem = ({ amount, description }): ReactElement => {
   }, []);
 
   return (
-    <Item ref={ref}>
-      <Amount>
-        {isAnimatedNumber && inView ? (
-          <AnimatedNumber
-            duration={duration}
-            stepPrecision={0}
-            value={amount}
-          />
-        ) : 0}
-      </Amount>
+    <li ref={ref}>
+      <BorderGrid>
+        {times(7, (borderIndex: number) => (
+          <FadeInUpAnimation
+            key={borderIndex}
+            options={{
+              distance: '60px',
+              threshold: 0.5,
+              transitionDelay: 0.1 * borderIndex,
+              transitionTime: 1
+            }}
+          >
+            <Border />
+          </FadeInUpAnimation>
+        ))}
+      </BorderGrid>
 
-      <Description>
-        {description}
-      </Description>
-    </Item>
+      <Item>
+        <Amount>
+          {isAnimatedNumber && inView ? (
+            <AnimatedNumber
+              duration={duration}
+              stepPrecision={0}
+              value={amount}
+            />
+          ) : 0}
+        </Amount>
+
+        <Description>
+          <FadeInUpAnimation
+            options={{
+              distance: '100%',
+              threshold: 0.5,
+              transitionDelay: 0.3,
+              transitionTime: 1
+            }}
+          >
+            <Type.H3>
+              {description}
+            </Type.H3>
+          </FadeInUpAnimation>
+        </Description>
+      </Item>
+    </li>
   );
 };
 
@@ -173,7 +198,7 @@ const ProgressSection = ({ data, id }: Props): ReactElement => {
           </StyledBadge>
         )}
 
-        <List>
+        <ul>
           {map(activeItem, ({
             amount,
             description
@@ -184,7 +209,23 @@ const ProgressSection = ({ data, id }: Props): ReactElement => {
               key={index}
             />
           ))}
-        </List>
+        </ul>
+
+        <BorderGrid>
+          {times(7, (borderIndex: number) => (
+            <FadeInUpAnimation
+              key={borderIndex}
+              options={{
+                distance: '60px',
+                threshold: 0.5,
+                transitionDelay: 0.1 * borderIndex,
+                transitionTime: 1
+              }}
+            >
+              <Border />
+            </FadeInUpAnimation>
+          ))}
+        </BorderGrid>
       </Container>
     </Section>
   );
