@@ -18,6 +18,7 @@ type Props = {
   as?: ElementType,
   children: ReactNode,
   className?: string,
+  fullHeight?: boolean,
   options?: IntersectionOptions & {
     distance?: any,
     transitionDelay?: number,
@@ -31,6 +32,7 @@ type Props = {
 
 const Content = styled.div<{
   distance?: string,
+  fullHeight?: boolean,
   isVisible: boolean,
   transitionDelay?: number,
   transitionTime?: number
@@ -47,6 +49,10 @@ const Content = styled.div<{
     opacity: 0;
     transform: translateY(${prop('distance', '20%')});
   `)}
+
+  ${ifProp('fullHeight', css`
+    height: 100%;
+  `)}
 `;
 
 /**
@@ -57,7 +63,7 @@ const FadeInUpAnimation = (props: Props): ReactElement => {
   const { children, className, options, ...rest } = props;
   const inViewOptions = omit(options, ['distance, transitionDelay, transitionTime']);
   const [ref, inView] = useInView(merge({}, {
-    threshold: 0.1,
+    threshold: 0.2,
     triggerOnce: true
   }, inViewOptions));
 
