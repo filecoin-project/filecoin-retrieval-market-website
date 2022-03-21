@@ -72,6 +72,14 @@ const Amount = styled(Display2)`
   ${media.min('xl')`
     line-height: 200px;
   `}
+
+  ${media.max('xs')`
+    font-size: 130px;
+  `}
+
+  @media only screen and (max-width: 374px) {
+    font-size: 115px;
+  }
 `;
 
 /**
