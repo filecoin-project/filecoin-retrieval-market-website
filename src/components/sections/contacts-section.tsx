@@ -89,16 +89,27 @@ const DotsGridWrapper = styled.div`
 const Grid = styled.div`
   display: grid;
   grid-template-areas:
-    'meetingLink meetingLink'
-    'footerLinks footerLinks'
-    'contactLink socialNetworks'
-    'author      socialNetworks';
-  grid-template-columns: 8fr 4fr;
-  grid-template-rows: max-content 1fr repeat(2, max-content);
+    'meetingLink'
+    'footerLinks'
+    'contactLink'
+    'socialNetworks'
+    'author';
+  grid-template-columns: 100%;
+  grid-template-rows: repeat(5, max-content);
   padding: ${units(17)} 0 38px;
 
   ${media.max('ms')`
     min-height: 100vh;
+  `}
+
+  ${media.min('xs')`
+    grid-template-areas:
+      'meetingLink meetingLink'
+      'footerLinks footerLinks'
+      'contactLink socialNetworks'
+      'author      socialNetworks';
+    grid-template-columns: 8fr 4fr;
+    grid-template-rows: max-content 1fr repeat(2, max-content);
   `}
 
   ${media.min('ms')`
@@ -268,11 +279,17 @@ const MailLabel = styled(Type.H3)`
  */
 
 const SocialNetworksWrapper = styled.div`
-  align-items: flex-end;
   display: flex;
-  flex-direction: column;
+  flex-wrap: wrap;
   grid-area: socialNetworks;
-  grid-gap: 30px;
+  grid-gap: ${units(2)} 30px;
+  margin: ${units(6)} 0;
+
+  @media only screen and (min-width: 375px) {
+    align-items: flex-end;
+    flex-direction: column;
+    margin: 0;
+  }
 
   ${media.min('md')`
     align-items: center;
