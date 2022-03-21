@@ -105,7 +105,7 @@ const Grid = styled.div`
 const Title = styled(Display1)`
   letter-spacing: -16px;
   padding-right: ${units(1)};
-  text-align: right;
+  text-align: left;
 
   ${media.min('lg')`
     margin-left: -${units(2.5)};
@@ -115,6 +115,11 @@ const Title = styled(Display1)`
     margin-left: -${units(3.5)};
     letter-spacing: -28px;
   `}
+
+  @media only screen and (max-width: 374px) {
+    font-size: 160px;
+    line-height: 160px;
+  }
 `;
 
 /**
