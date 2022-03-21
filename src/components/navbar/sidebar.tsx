@@ -122,6 +122,7 @@ const StyledContainer = styled(Container)`
   height: 100%;
   overflow-x: hidden;
   overflow-y: auto;
+  padding-bottom: ${theme('dimensions.navbarHeightMobile')}px;
   position: relative;
   scroll-snap-type: y mandatory;
 `;
