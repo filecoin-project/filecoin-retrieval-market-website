@@ -12,9 +12,9 @@ import {
   useBreakpoint
 } from '@untile/react-components';
 
-import { ifProp, theme } from 'styled-tools';
 import { navbarLinks } from 'src/core/content-config/navbar';
 import { routes } from 'src/core/routes';
+import { theme } from 'styled-tools';
 import Button from 'src/components/core/buttons/button';
 import Container from 'src/components/core/layout/container';
 import HamburgerMenu from './hamburger-menu';
@@ -29,7 +29,7 @@ import styled from 'styled-components';
  * `Nav` styled component.
  */
 
-const Nav = styled.nav<{ isScrolled?: boolean }>`
+const Nav = styled.nav`
   align-items: center;
   height: ${theme('dimensions.navbarHeightMobile')}px;
   left: 0;
@@ -37,8 +37,6 @@ const Nav = styled.nav<{ isScrolled?: boolean }>`
   position: fixed;
   right: 0;
   top: 0;
-  transform: translateY(${ifProp('isScrolled', -100, 0)}%);
-  transition: transform ${theme('animations.easeOutQuadTransition')};
   z-index: ${theme('zIndex.navbar')};
 
   ${media.min('md')`
@@ -117,8 +115,6 @@ const StyledSidebar = styled(Sidebar)`
 
 const Navbar = (): ReactElement => {
   const isMobile = useBreakpoint('lg', 'max');
-  const [prevScrollPosition, setPrevScrollPosition] = useState<number>(0);
-  const [isScrolled, setScrolled] = useState<boolean>(false);
   const [isSidebarOpen, setSidebarOpen] = useState<boolean>();
   const handleClicMenuLink = useCallback((id: string) => {
     const element = document.getElementById(id);
@@ -137,19 +133,6 @@ const Navbar = (): ReactElement => {
     }
   }, [isSidebarOpen]);
 
-  const handleScroll = useCallback(() => {
-    const currentScrollPosition = window.pageYOffset;
-
-    setScrolled(prevScrollPosition < currentScrollPosition);
-    setPrevScrollPosition(currentScrollPosition);
-  }, [prevScrollPosition]);
-
-  useEffect(() => {
-    window.addEventListener('scroll', handleScroll);
-
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, [handleScroll]);
-
   useBodyScroll({ off: isSidebarOpen });
 
   useEffect(() => {
@@ -159,7 +142,7 @@ const Navbar = (): ReactElement => {
   }, [isMobile, isSidebarOpen]);
 
   return (
-    <Nav isScrolled={isScrolled && !isMobile}>
+    <Nav>
       <Container>
         <ContentWrapper>
           <LogoLink href={routes.home}>
