@@ -15,6 +15,7 @@ export default createGlobalStyle`
   body {
     ${typography.styles.p}
     
+    background-color: ${color('blue900')};
     color: ${color('textColor')};
   }
 `;
