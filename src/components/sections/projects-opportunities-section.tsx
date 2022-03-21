@@ -163,6 +163,16 @@ const Tags = styled.div`
 `;
 
 /**
+ * `ItemBadge` styled component.
+ */
+
+const ItemBadge = styled(Badge)`
+  ${media.max('xs')`
+    font-size: 14px;
+  `}
+`;
+
+/**
  * `ListItem` component.
  */
 
@@ -287,9 +297,9 @@ const ListItem = (props): ReactElement => {
                 transitionTime: 1
               }}
             >
-              <Badge variant={'fill'}>
+              <ItemBadge variant={'fill'}>
                 {tag}
-              </Badge>
+              </ItemBadge>
             </FadeInUpAnimation>
           ))}
         </Tags>
@@ -310,12 +320,12 @@ const ListItem = (props): ReactElement => {
               transitionTime: 1
             }}
           >
-            <Badge
+            <ItemBadge
               colorTheme={statusColor}
               variant={'fill'}
             >
               {status}
-            </Badge>
+            </ItemBadge>
           </FadeInUpAnimation>
         </Box>
       </ItemGrid>
