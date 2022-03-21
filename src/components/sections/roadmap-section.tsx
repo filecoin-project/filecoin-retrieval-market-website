@@ -105,7 +105,6 @@ const Grid = styled.div`
 const Title = styled(Display1)`
   letter-spacing: -16px;
   padding-right: ${units(1)};
-  text-align: left;
 
   ${media.min('lg')`
     margin-left: -${units(2.5)};
@@ -222,6 +221,9 @@ const RoadmapSection = ({ data, id }: Props): ReactElement | null => {
                           data-swiper-parallax={-100}
                           gridArea={'month'}
                           gridRow={'1 / 3'}
+                          textAlign={'right'}
+                          textAlignMd={'left'}
+                          textAlignXxl={'right'}
                         >
                           {isMobile && month.length > 3 ? concat(slice(month, 0, 3), '.') : month}
                         </Title>
@@ -233,6 +235,7 @@ const RoadmapSection = ({ data, id }: Props): ReactElement | null => {
                           gridRowLg={'2 / 6'}
                           marginBottom={units(6.5)}
                           marginBottomLg={0}
+                          textAlign={'right'}
                         >
                           {day}
                         </Title>
