@@ -1,5 +1,14 @@
 # Changelog
 
+## [v0.0.2](https://github.com/untile/filecoin-retrieval-market-website/releases/tag/v0.0.2) (2022-03-22)
+- Fix RoadmapSection texts alignment [\#34](https://github.com/untile/filecoin-retrieval-market-website/pull/34) ([tiago258](https://github.com/tiago258))
+- Fix ContactsSection [\#38](https://github.com/untile/filecoin-retrieval-market-website/pull/38) ([tiago258](https://github.com/tiago258))
+- Fix ProjectsOpportunitiesSection [\#37](https://github.com/untile/filecoin-retrieval-market-website/pull/37) ([tiago258](https://github.com/tiago258))
+- Fix RoadmapSection sizes [\#36](https://github.com/untile/filecoin-retrieval-market-website/pull/36) ([tiago258](https://github.com/tiago258))
+- Fix ProgressSection [\#35](https://github.com/untile/filecoin-retrieval-market-website/pull/35) ([tiago258](https://github.com/tiago258))
+- Remove navbar hide on scroll [\#33](https://github.com/untile/filecoin-retrieval-market-website/pull/33) ([tiago258](https://github.com/tiago258))
+- Fix body background-color [\#32](https://github.com/untile/filecoin-retrieval-market-website/pull/32) ([tiago258](https://github.com/tiago258))
+
 ## [v0.0.1](https://github.com/untile/filecoin-retrieval-market-website/releases/tag/v0.0.1) (2022-03-17)
 - Add animations [\#31](https://github.com/untile/filecoin-retrieval-market-website/pull/31) ([tiago258](https://github.com/tiago258))
 - Add Navbar scroll animation [\#30](https://github.com/untile/filecoin-retrieval-market-website/pull/30) ([tiago258](https://github.com/tiago258))
