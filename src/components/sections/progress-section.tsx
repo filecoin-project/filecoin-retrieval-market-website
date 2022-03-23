@@ -5,6 +5,7 @@
 
 import { Badge } from 'src/components/core/badge';
 import { Display2 } from 'src/components/core/typography';
+import { Element } from 'react-scroll';
 import { ProgressProps } from 'src/types/api';
 import { Type, media, units, useBreakpoint } from '@untile/react-components';
 import { useInView } from 'react-intersection-observer';
@@ -25,14 +26,14 @@ import times from 'lodash/times';
 
 type Props = {
   data: ProgressProps[],
-  id?: string
+  name?: string
 };
 
 /**
  * `Section` styled component.
  */
 
-const Section = styled.section`
+const Section = styled(Element).attrs({ as: 'section' })`
   padding: ${units(14.5)}  0 ${units(2.5)};
   position: relative;
 
@@ -189,15 +190,15 @@ const ListItem = ({ amount, description }): ReactElement => {
  * `ProgressSection` component.
  */
 
-const ProgressSection = ({ data, id }: Props): ReactElement => {
+const ProgressSection = ({ data, name }: Props): ReactElement => {
   const isTablet = useBreakpoint('lg', 'max');
   const { activeItem } = useMemo(() => ({
     activeItem: filter(data, { active: true })
   }), [data]);
 
   return (
-    <Section id={id}>
-      {!isTablet && <StaticNavbar activeItem={id} />}
+    <Section name={name}>
+      {!isTablet && <StaticNavbar activeItem={name} />}
 
       <Container>
         {isTablet && (

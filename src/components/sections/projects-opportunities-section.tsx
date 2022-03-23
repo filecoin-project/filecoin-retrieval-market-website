@@ -12,8 +12,9 @@ import {
   units,
   useBreakpoint
 } from '@untile/react-components';
-import { ProjectProps } from 'src/types/api';
 
+import { Element } from 'react-scroll';
+import { ProjectProps } from 'src/types/api';
 import { ifProp } from 'styled-tools';
 import Arrow from 'src/components/core/arrow';
 import Border from 'src/components/border';
@@ -34,14 +35,14 @@ import times from 'lodash/times';
 
 type Props = {
   data: ProjectProps[],
-  id?: string
+  name?: string
 };
 
 /**
  * `Section` styled component.
  */
 
-const Section = styled.section`
+const Section = styled(Element).attrs({ as: 'section' })`
   padding: ${units(14.5)}  0 ${units(2.5)};
   position: relative;
 
@@ -337,7 +338,7 @@ const ListItem = (props): ReactElement => {
  * `ProjectsOpportunitiesSection` component.
  */
 
-const ProjectsOpportunitiesSection = ({ data, id }: Props): ReactElement => {
+const ProjectsOpportunitiesSection = ({ data, name }: Props): ReactElement => {
   const isTablet = useBreakpoint('lg', 'max');
   const { opportunities, projects } = useMemo(() => ({
     opportunities: filter(data, { active: true, type: 'opportunity' }),
@@ -345,8 +346,8 @@ const ProjectsOpportunitiesSection = ({ data, id }: Props): ReactElement => {
   }), [data]);
 
   return (
-    <Section id={id}>
-      {!isTablet && <StaticNavbar activeItem={id} />}
+    <Section name={name}>
+      {!isTablet && <StaticNavbar activeItem={name} />}
 
       <Container>
         {isTablet && (

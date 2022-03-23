@@ -14,6 +14,7 @@ import {
   useBreakpoint
 } from '@untile/react-components';
 
+import { Element } from 'react-scroll';
 import { ifProp, theme } from 'styled-tools';
 import { useInView } from 'react-intersection-observer';
 import Container from 'src/components/core/layout/container';
@@ -28,7 +29,7 @@ import styled, { css } from 'styled-components';
  */
 
 type Props = {
-  id?: string,
+  name?: string,
   title: string
 };
 
@@ -36,7 +37,7 @@ type Props = {
  * `Section` styled component.
  */
 
-const Section = styled.section`
+const Section = styled(Element).attrs({ as: 'section' })`
   min-height: 100vh;
   padding: ${units(14.5)}  0 ${units(2.5)};
   position: relative;
@@ -189,7 +190,7 @@ const Highlight = styled(Type.H3)`
  * `WhyNowSection` component.
  */
 
-const WhyNowSection = ({ id, title }: Props): ReactElement => {
+const WhyNowSection = ({ name, title }: Props): ReactElement => {
   const isTablet = useBreakpoint('lg', 'max');
   const [ref, inView] = useInView({
     threshold: 1,
@@ -197,8 +198,8 @@ const WhyNowSection = ({ id, title }: Props): ReactElement => {
   });
 
   return (
-    <Section id={id}>
-      {!isTablet && <StaticNavbar activeItem={id} />}
+    <Section name={name}>
+      {!isTablet && <StaticNavbar activeItem={name} />}
 
       <Container>
         {isTablet && (
