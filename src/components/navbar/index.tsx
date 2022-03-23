@@ -12,6 +12,7 @@ import {
   useBreakpoint
 } from '@untile/react-components';
 
+import { Link } from 'react-scroll';
 import { navbarLinks } from 'src/core/content-config/navbar';
 import { routes } from 'src/core/routes';
 import { theme } from 'styled-tools';
@@ -102,6 +103,30 @@ const Actions = styled.div<{ size: number }>`
 `;
 
 /**
+ * `StyledButton` styled component.
+ */
+
+const StyledButton = styled(Button)`
+  &:focus {
+    background-color: transparent;
+    color: ${color('white')};
+  }
+`;
+
+/**
+ * `StyledLink` styled component.
+ */
+
+const StyledLink = styled(Link)`
+  &.active {
+    ${StyledButton} {
+      background-color: ${color('white')};
+      color: ${color('black')};
+    }
+  }
+`;
+
+/**
  * `StyledSidebar` styled component.
  */
 
@@ -116,16 +141,7 @@ const StyledSidebar = styled(Sidebar)`
 const Navbar = (): ReactElement => {
   const isMobile = useBreakpoint('lg', 'max');
   const [isSidebarOpen, setSidebarOpen] = useState<boolean>();
-  const handleClicMenuLink = useCallback((id: string) => {
-    const element = document.getElementById(id);
-
-    if (element) {
-      element.scrollIntoView({
-        behavior: 'smooth',
-        block: 'start'
-      });
-    }
-
+  const handleSidebar = useCallback(() => {
     if (isSidebarOpen) {
       setTimeout(() => {
         setSidebarOpen(false);
@@ -151,12 +167,17 @@ const Navbar = (): ReactElement => {
 
           <Actions size={size(navbarLinks)}>
             {!isMobile ? map(navbarLinks, ({ id, label }) => (
-              <Button
+              <StyledLink
+                duration={1000}
                 key={label}
-                onClick={() => handleClicMenuLink(id)}
+                smooth={'easeOutQuad'}
+                spy
+                to={id}
               >
-                {label}
-              </Button>
+                <StyledButton>
+                  {label}
+                </StyledButton>
+              </StyledLink>
             )) : (
               <HamburgerMenu
                 isOpen={isSidebarOpen}
@@ -169,7 +190,7 @@ const Navbar = (): ReactElement => {
 
       <StyledSidebar
         isOpen={isSidebarOpen}
-        onClickHandle={handleClicMenuLink}
+        onClickHandle={handleSidebar}
       />
     </Nav>
   );
