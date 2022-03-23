@@ -119,12 +119,17 @@ const PageApp = (props: AppProps): ReactElement => {
           content={'#0a142b'}
           name={'theme-color'}
         />
+
+        <script
+          // eslint-disable-next-line react/no-danger
+          dangerouslySetInnerHTML={{
+            __html: `history.scrollRestoration = "manual"`
+          }}
+        />
       </Head>
 
       <ThemeProvider theme={createTheme(theme)}>
         <UntileGlobalStyle />
-
-        <GlobalStyle />
 
         <GlobalStyle />
 
