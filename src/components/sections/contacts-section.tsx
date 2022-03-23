@@ -14,6 +14,7 @@ import {
   useBreakpoint
 } from '@untile/react-components';
 
+import { Element } from 'react-scroll';
 import { SettingProps } from 'src/types/api';
 import { colors } from 'src/styles/colors';
 import { theme } from 'styled-tools';
@@ -36,14 +37,14 @@ import styled from 'styled-components';
 
 type Props = {
   data: SettingProps[],
-  id?: string
+  name?: string
 };
 
 /**
  * `Section` styled component.
  */
 
-const Section = styled.section`
+const Section = styled(Element).attrs({ as: 'section' })`
   background-color: ${color('blue400')};
   position: relative;
 `;
@@ -315,7 +316,7 @@ const AuthorWrapper = styled.div`
  * `ContactsSection` component.
  */
 
-const ContactsSection = ({ data, id }: Props): ReactElement => {
+const ContactsSection = ({ data, name }: Props): ReactElement => {
   const isMobile = useBreakpoint('ms', 'max');
   const isTablet = useBreakpoint('lg', 'max');
   const { emailContact, footerLinks, socialNetworks } = useMemo(() => ({
@@ -325,11 +326,11 @@ const ContactsSection = ({ data, id }: Props): ReactElement => {
   }), [data]);
 
   return (
-    <Section id={id}>
+    <Section name={name}>
       <Container>
         {!isTablet && (
           <>
-            <StaticNavbar activeItem={id} />
+            <StaticNavbar activeItem={name} />
 
             <StyledDotsGridSection dotsColor={colors.white} />
           </>

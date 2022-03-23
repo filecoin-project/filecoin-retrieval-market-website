@@ -5,6 +5,7 @@
 
 import { Badge } from 'src/components/core/badge';
 import { Display1 } from 'src/components/core/typography';
+import { Element } from 'react-scroll';
 import { RoadmapProps } from 'src/types/api';
 import { Svg, Type, media, units, useBreakpoint } from '@untile/react-components';
 import { theme } from 'styled-tools';
@@ -27,7 +28,7 @@ import styled from 'styled-components';
 
 type Props = {
   data: RoadmapProps[],
-  id?: string
+  name?: string
 };
 
 /**
@@ -40,7 +41,7 @@ const slideTransition = 1000;
  * `Section` component.
  */
 
-const Section = styled.section`
+const Section = styled(Element).attrs({ as: 'section' })`
   padding: ${units(14.5)} 0 ${units(15)};
   position: relative;
 
@@ -156,7 +157,7 @@ const SwipeWrapper = styled.div`
  * `RoadmapSection` component.
  */
 
-const RoadmapSection = ({ data, id }: Props): ReactElement | null => {
+const RoadmapSection = ({ data, name }: Props): ReactElement | null => {
   const isMobile = useBreakpoint('md', 'max');
   const isTablet = useBreakpoint('lg', 'max');
   const sliderRef = useRef<any>();
@@ -168,8 +169,8 @@ const RoadmapSection = ({ data, id }: Props): ReactElement | null => {
 
   return (
     <>
-      <Section id={id}>
-        {!isTablet && <StaticNavbar activeItem={id} />}
+      <Section name={name}>
+        {!isTablet && <StaticNavbar activeItem={name} />}
 
         {isTablet && (
           <FadeInUpAnimation

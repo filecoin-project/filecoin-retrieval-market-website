@@ -55,36 +55,36 @@ const Home = ({ data }: Props): ReactElement => {
         />
 
         <WhyNowSection
-          id={sectionsIds.sectionWhyNow}
+          name={sectionsIds.sectionWhyNow}
           title={data?.content?.whyNowDescription}
         />
 
-        <WhatWeDoSection id={sectionsIds.sectionWhatWeDo} />
+        <WhatWeDoSection name={sectionsIds.sectionWhatWeDo} />
 
         <ProgressSection
           data={data?.progress}
-          id={sectionsIds.sectionProgress}
+          name={sectionsIds.sectionProgress}
         />
 
         <ProjectsOpportunitiesSection
           data={data?.projectsOpportunities}
-          id={sectionsIds.sectionProjectsAndOpportunities}
+          name={sectionsIds.sectionProjectsAndOpportunities}
         />
 
         <TeamsSection
           data={data?.teams}
-          id={sectionsIds.sectionTeams}
+          name={sectionsIds.sectionTeams}
         />
 
         <RoadmapSection
           data={data?.roadmap}
-          id={sectionsIds.sectionRoadmap}
+          name={sectionsIds.sectionRoadmap}
         />
       </BodyGradient>
 
       <ContactsSection
         data={data?.settings}
-        id={sectionsIds.sectionContact}
+        name={sectionsIds.sectionContact}
       />
     </>
   );

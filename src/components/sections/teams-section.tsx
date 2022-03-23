@@ -5,6 +5,7 @@
 
 import { Badge } from 'src/components/core/badge';
 import { Box, Type, media, units, useBreakpoint } from '@untile/react-components';
+import { Element } from 'react-scroll';
 import { TeamProps } from 'src/types/api';
 import { theme } from 'styled-tools';
 import Card from 'src/components/card';
@@ -23,14 +24,14 @@ import styled from 'styled-components';
 
 type Props = {
   data: TeamProps[],
-  id?: string
+  name?: string
 };
 
 /**
  * `Section` styled component.
  */
 
-const Section = styled.section`
+const Section = styled(Element).attrs({ as: 'section' })`
   padding: ${units(14.5)}  0 ${units(2.5)};
   position: relative;
 
@@ -110,7 +111,7 @@ const carouselConfig = {
  * `TeamsSection` component.
  */
 
-const TeamsSection = ({ data, id }: Props): ReactElement | null => {
+const TeamsSection = ({ data, name }: Props): ReactElement | null => {
   const isTablet = useBreakpoint('lg', 'max');
   const { activeCard } = useMemo(() => ({
     activeCard: filter(data, { active: true })
@@ -128,10 +129,10 @@ const TeamsSection = ({ data, id }: Props): ReactElement | null => {
 
   return (
     <Section
-      id={id}
+      name={name}
       ref={sectionRef}
     >
-      {!isTablet && <StaticNavbar activeItem={id} />}
+      {!isTablet && <StaticNavbar activeItem={name} />}
 
       {isTablet && (
         <FadeInUpAnimation

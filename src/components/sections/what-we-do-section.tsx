@@ -5,6 +5,7 @@
 
 import { Badge } from 'src/components/core/badge';
 import { Box, Type, media, units, useBreakpoint } from '@untile/react-components';
+import { Element } from 'react-scroll';
 import Container from 'src/components/core/layout/container';
 import FadeInUpAnimation from 'src/components/core/animations/fade-in-up';
 import React, { ReactElement } from 'react';
@@ -16,14 +17,14 @@ import styled from 'styled-components';
  */
 
 type Props = {
-  id?: string
+  name?: string
 };
 
 /**
  * `Section` styled component.
  */
 
-const Section = styled.section`
+const Section = styled(Element).attrs({ as: 'section' })`
   padding: ${units(14.5)}  0 ${units(2.5)};
   position: relative;
 
@@ -59,12 +60,12 @@ const Grid = styled.div`
  * `WhatWeDoSection` component.
  */
 
-const WhatWeDoSection = ({ id }: Props): ReactElement => {
+const WhatWeDoSection = ({ name }: Props): ReactElement => {
   const isTablet = useBreakpoint('lg', 'max');
 
   return (
-    <Section id={id}>
-      {!isTablet && <StaticNavbar activeItem={id} />}
+    <Section name={name}>
+      {!isTablet && <StaticNavbar activeItem={name} />}
 
       <Container>
         {isTablet && (

@@ -3,6 +3,7 @@
  * Module dependencies.
  */
 
+import { Link } from 'react-scroll';
 import { Svg, Type, color, media, units, useBreakpoint } from '@untile/react-components';
 import { colors } from 'src/styles/colors';
 import { ifProp, theme } from 'styled-tools';
@@ -12,7 +13,7 @@ import DotsGrid from 'src/components/dots-grid';
 import DotsGridSection from './dots-grid-section';
 import FadeInAnimation from 'src/components/core/animations/fade-in';
 import FadeInUpAnimation from '../core/animations/fade-in-up';
-import React, { ReactElement, useCallback } from 'react';
+import React, { ReactElement } from 'react';
 import arrowDown from 'src/assets/svg/arrow-down.svg';
 import isEmpty from 'lodash/isEmpty';
 import styled, { css } from 'styled-components';
@@ -121,7 +122,7 @@ const HiddenLabel = styled(VisibleLabel)`
  * `ScrollDown` styled component.
  */
 
-const ScrollDown = styled.div<{ hasLink?: boolean }>`
+const ScrollDown = styled(Link)<{ hasLink?: boolean }>`
   align-items: flex-end;
   bottom: 30px;
   display: flex;
@@ -171,16 +172,6 @@ const LabelWrapper = styled.div`
 const IntroSection = ({ id, nextSectionId, title }: Props): ReactElement => {
   const isTablet = useBreakpoint('lg', 'max');
   const { isReady } = useRouter();
-  const handleClickAnchor = useCallback(() => {
-    const element = document.getElementById(nextSectionId);
-
-    if (element) {
-      element.scrollIntoView({
-        behavior: 'smooth',
-        block: 'start'
-      });
-    }
-  }, [nextSectionId]);
 
   return (
     <Section id={id}>
@@ -216,7 +207,8 @@ const IntroSection = ({ id, nextSectionId, title }: Props): ReactElement => {
           >
             <ScrollDown
               hasLink={!isEmpty(nextSectionId)}
-              onClick={handleClickAnchor}
+              smooth={'easeOutQuad'}
+              to={nextSectionId}
             >
               <LabelWrapper>
                 <HiddenLabel>
