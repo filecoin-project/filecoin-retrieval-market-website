@@ -7,7 +7,7 @@ import { Fill, color, states } from '@untile/react-components';
 import { ifProp, prop, theme } from 'styled-tools';
 import { navbarLinks } from 'src/core/content-config/navbar';
 import Container from 'src/components/core/layout/container';
-import React, { ReactElement } from 'react';
+import React, { ReactElement, useEffect, useRef } from 'react';
 import map from 'lodash/map';
 import styled, { css } from 'styled-components';
 
@@ -192,30 +192,44 @@ const NavbarLink = styled.button<{
  * `Sidebar` component.
  */
 
-const Sidebar = ({ isOpen, onClickHandle }: Props): ReactElement => (
-  <Wrapper visible={isOpen}>
-    <Background visible={isOpen} />
+const Sidebar = ({ isOpen, onClickHandle }: Props): ReactElement => {
+  const scrollContainerRef = useRef<HTMLDivElement>();
 
-    <Gradient visible={isOpen} />
+  useEffect(() => {
+    if (!isOpen) {
+      const timeout = setTimeout(() => {
+        scrollContainerRef.current.scrollTo(0, 0);
+      }, 1000);
 
-    <StyledContainer>
-      <MenuWrapper>
-        <List visible={isOpen}>
-          {map(navbarLinks, ({ id, label }, index: number) => (
-            <NavbarLink
-              delay={(index + 1) * delay + startDelay}
-              key={label}
-              onClick={() => onClickHandle(id)}
-              visible={isOpen}
-            >
-              {label}
-            </NavbarLink>
-          ))}
-        </List>
-      </MenuWrapper>
-    </StyledContainer>
-  </Wrapper>
-);
+      return () => clearTimeout(timeout);
+    }
+  }, [isOpen]);
+
+  return (
+    <Wrapper visible={isOpen}>
+      <Background visible={isOpen} />
+
+      <Gradient visible={isOpen} />
+
+      <StyledContainer ref={scrollContainerRef}>
+        <MenuWrapper>
+          <List visible={isOpen}>
+            {map(navbarLinks, ({ id, label }, index: number) => (
+              <NavbarLink
+                delay={(index + 1) * delay + startDelay}
+                key={label}
+                onClick={() => onClickHandle(id)}
+                visible={isOpen}
+              >
+                {label}
+              </NavbarLink>
+            ))}
+          </List>
+        </MenuWrapper>
+      </StyledContainer>
+    </Wrapper>
+  );
+};
 
 /**
  * Export `Sidebar` component.
