@@ -4,6 +4,7 @@
  */
 
 import { Fill, Svg, color, states, units } from '@untile/react-components';
+import { Link } from 'react-scroll';
 import { ifProp, prop, theme } from 'styled-tools';
 import { navbarLinks } from 'src/core/content-config/navbar';
 import Container from 'src/components/core/layout/container';
@@ -25,7 +26,7 @@ const startDelay = 250;
 
 type Props = {
   isOpen: boolean,
-  onClickHandle: (id: string) => void
+  onClickHandle: () => void
 };
 
 /**
@@ -193,11 +194,14 @@ const NavbarLink = styled.button<{
  * `Arrow` styled component.
  */
 
-const Arrow = styled(Svg)`
+const Arrow = styled(Svg)<{ isVisible: boolean }>`
   bottom: 30px;
   display: none;
+  opacity: ${ifProp('isVisible', 1, 0)};
   position: fixed;
   right: ${units(2.5)};
+  transition: opacity ${theme('animations.defaultTransition')};
+  transition-delay: ${ifProp('isVisible', 0.6, 0)}s;
 
   @media screen and (max-height: 640px) {
     display: block;
@@ -214,7 +218,7 @@ const Sidebar = ({ isOpen, onClickHandle }: Props): ReactElement => {
   useEffect(() => {
     if (!isOpen) {
       const timeout = setTimeout(() => {
-        scrollContainerRef.current.scrollTo(0, 0);
+        scrollContainerRef?.current?.scrollTo(0, 0);
       }, 1000);
 
       return () => clearTimeout(timeout);
@@ -231,20 +235,28 @@ const Sidebar = ({ isOpen, onClickHandle }: Props): ReactElement => {
         <MenuWrapper>
           <List visible={isOpen}>
             {map(navbarLinks, ({ id, label }, index: number) => (
-              <NavbarLink
-                delay={(index + 1) * delay + startDelay}
+              <Link
+                duration={1500}
                 key={label}
-                onClick={() => onClickHandle(id)}
-                visible={isOpen}
+                onClick={() => onClickHandle()}
+                smooth={'easeOutQuad'}
+                spy
+                to={id}
               >
-                {label}
-              </NavbarLink>
+                <NavbarLink
+                  delay={(index + 1) * delay + startDelay}
+                  visible={isOpen}
+                >
+                  {label}
+                </NavbarLink>
+              </Link>
             ))}
           </List>
         </MenuWrapper>
 
         <Arrow
           icon={arrowDown}
+          isVisible={isOpen}
           size={'14px'}
         />
       </StyledContainer>
