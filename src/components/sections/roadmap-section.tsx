@@ -70,7 +70,7 @@ const Grid = styled.div`
     'day         day   day'
     'description .     .';
   grid-template-columns: 5fr 1fr 4fr;
-  grid-template-rows: max-content 38px repeat(2, max-content) ${units(7)};
+  grid-template-rows: max-content 38px repeat(2, max-content) ${units(4.5)};
 
   ${media.min('lg')`
     grid-template-areas:
@@ -221,7 +221,6 @@ const RoadmapSection = ({ data, id }: Props): ReactElement | null => {
                           data-swiper-parallax={-100}
                           gridArea={'month'}
                           gridRow={'1 / 3'}
-                          textAlign={'right'}
                           textAlignMd={'left'}
                           textAlignXxl={'right'}
                         >
