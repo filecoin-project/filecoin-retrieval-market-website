@@ -3,11 +3,12 @@
  * Module dependencies.
  */
 
-import { Fill, color, states } from '@untile/react-components';
+import { Fill, Svg, color, states, units } from '@untile/react-components';
 import { ifProp, prop, theme } from 'styled-tools';
 import { navbarLinks } from 'src/core/content-config/navbar';
 import Container from 'src/components/core/layout/container';
 import React, { ReactElement, useEffect, useRef } from 'react';
+import arrowDown from 'src/assets/svg/arrow-down.svg';
 import map from 'lodash/map';
 import styled, { css } from 'styled-components';
 
@@ -122,7 +123,7 @@ const StyledContainer = styled(Container)`
   height: 100%;
   overflow-x: hidden;
   overflow-y: auto;
-  padding-bottom: ${theme('dimensions.navbarHeightMobile')}px;
+  padding: 0 ${units(6)} ${theme('dimensions.navbarHeightMobile')}px ${theme('grid.gutterMobile')}px;
   position: relative;
   scroll-snap-type: y mandatory;
 `;
@@ -189,6 +190,21 @@ const NavbarLink = styled.button<{
 `;
 
 /**
+ * `Arrow` styled component.
+ */
+
+const Arrow = styled(Svg)`
+  bottom: 30px;
+  display: none;
+  position: fixed;
+  right: ${units(2.5)};
+
+  @media screen and (max-height: 640px) {
+    display: block;
+  }
+`;
+
+/**
  * `Sidebar` component.
  */
 
@@ -226,6 +242,11 @@ const Sidebar = ({ isOpen, onClickHandle }: Props): ReactElement => {
             ))}
           </List>
         </MenuWrapper>
+
+        <Arrow
+          icon={arrowDown}
+          size={'14px'}
+        />
       </StyledContainer>
     </Wrapper>
   );
