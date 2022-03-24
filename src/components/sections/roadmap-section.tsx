@@ -42,8 +42,12 @@ const slideTransition = 1000;
  */
 
 const Section = styled(Element).attrs({ as: 'section' })`
-  padding: ${units(14.5)} 0 ${units(15)};
+  padding: clamp(${units(12)}, 28vw, 28vw) 0 ${units(12)};
   position: relative;
+
+  ${media.min('sm')`
+    padding: clamp(${units(12)}, 18vw, 18vw) 0 ${units(12)};
+  `}
 
   ${media.min('md')`
     padding: clamp(${units(17.5)}, 9.5vw, 9.5vw) 0 ${units(12)};
@@ -71,7 +75,11 @@ const Grid = styled.div`
     'day         day   day'
     'description .     .';
   grid-template-columns: 5fr 1fr 4fr;
-  grid-template-rows: max-content 38px repeat(2, max-content) ${units(4.5)};
+  grid-template-rows: max-content 38px repeat(2, max-content) ${units(2)};
+
+  ${media.min('xs')`
+    grid-template-rows: max-content 38px repeat(2, max-content) ${units(4.5)};
+  `}
 
   ${media.min('lg')`
     grid-template-areas:
@@ -117,8 +125,8 @@ const Title = styled(Display1)`
   `}
 
   @media only screen and (max-width: 374px) {
-    font-size: 160px;
-    line-height: 160px;
+    font-size: 140px;
+    line-height: 150px;
   }
 `;
 
@@ -127,8 +135,12 @@ const Title = styled(Display1)`
  */
 
 const BadgeWrapper = styled.div`
-  margin-bottom: ${units(7)};
+  margin-bottom: ${units(2)};
   padding: 0 ${theme('grid.gutterMobile')}px;
+
+  ${media.min('ms')`
+    margin-bottom: ${units(7)};
+  `}
   
   ${media.min('md')`
     padding: 0 0 0 ${theme('grid.gutter')}px;
@@ -141,12 +153,16 @@ const BadgeWrapper = styled.div`
 
 const SwipeWrapper = styled.div`
   align-items: center;
-  bottom: -70px;
+  bottom: -${units(4.5)};
   display: flex;
   grid-gap: ${units(2)};
   height: 35px;
   position: absolute;
   right: 0;
+
+  ${media.min('sm')`
+    bottom: -70px;
+  `}
 
   ${media.min('lg')`
     bottom: 0;
@@ -233,8 +249,9 @@ const RoadmapSection = ({ data, name }: Props): ReactElement | null => {
                           gridArea={'day'}
                           gridRow={'2 / 4'}
                           gridRowLg={'2 / 6'}
-                          marginBottom={units(6.5)}
+                          marginBottom={units(1)}
                           marginBottomLg={0}
+                          marginBottomMs={units(6.5)}
                           textAlign={'right'}
                         >
                           {day}
