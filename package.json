@@ -1,6 +1,6 @@
 {
   "name": "filecoin-retrieval-market-website",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "private": true,
   "description": "Filecoin retrieval market website",
   "keywords": [

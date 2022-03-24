@@ -1,5 +1,11 @@
 # Changelog
 
+## [v0.0.3](https://github.com/untile/filecoin-retrieval-market-website/releases/tag/v0.0.3) (2022-03-24)
+- Fix navbar active items [\#42](https://github.com/untile/filecoin-retrieval-market-website/pull/42) ([tiago258](https://github.com/tiago258))
+- Fix Roadmap mobile alignments [\#41](https://github.com/untile/filecoin-retrieval-market-website/pull/41) ([tiago258](https://github.com/tiago258))
+- Add sidebar arrow [\#40](https://github.com/untile/filecoin-retrieval-market-website/pull/40) ([tiago258](https://github.com/tiago258))
+- Fix scroll top on mobile menu [\#39](https://github.com/untile/filecoin-retrieval-market-website/pull/39) ([tiago258](https://github.com/tiago258))
+
 ## [v0.0.2](https://github.com/untile/filecoin-retrieval-market-website/releases/tag/v0.0.2) (2022-03-22)
 - Fix RoadmapSection texts alignment [\#34](https://github.com/untile/filecoin-retrieval-market-website/pull/34) ([tiago258](https://github.com/tiago258))
 - Fix ContactsSection [\#38](https://github.com/untile/filecoin-retrieval-market-website/pull/38) ([tiago258](https://github.com/tiago258))
