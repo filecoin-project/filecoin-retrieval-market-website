@@ -1,5 +1,8 @@
 # Changelog
 
+## [v0.0.4](https://github.com/untile/filecoin-retrieval-market-website/releases/tag/v0.0.4) (2022-03-24)
+- Update RoadmapSection [\#43](https://github.com/untile/filecoin-retrieval-market-website/pull/43) ([tiago258](https://github.com/tiago258))
+
 ## [v0.0.3](https://github.com/untile/filecoin-retrieval-market-website/releases/tag/v0.0.3) (2022-03-24)
 - Fix navbar active items [\#42](https://github.com/untile/filecoin-retrieval-market-website/pull/42) ([tiago258](https://github.com/tiago258))
 - Fix Roadmap mobile alignments [\#41](https://github.com/untile/filecoin-retrieval-market-website/pull/41) ([tiago258](https://github.com/tiago258))
