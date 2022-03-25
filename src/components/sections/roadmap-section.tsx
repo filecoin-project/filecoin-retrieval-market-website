@@ -112,8 +112,12 @@ const Grid = styled.div`
  */
 
 const Title = styled(Display1)`
-  letter-spacing: -16px;
+  letter-spacing: -12px;
   padding-right: ${units(1)};
+
+  ${media.min('ms')`
+    letter-spacing: -16px;
+  `}
 
   ${media.min('lg')`
     margin-left: -${units(2.5)};
