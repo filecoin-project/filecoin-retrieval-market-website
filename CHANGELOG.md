@@ -1,6 +1,7 @@
 # Changelog
 
-## [v0.0.4](https://github.com/untile/filecoin-retrieval-market-website/releases/tag/v0.0.4) (2022-03-24)
+## [v0.0.5](https://github.com/untile/filecoin-retrieval-market-website/releases/tag/v0.0.5) (2022-03-25)
+- Increase RoadmapSection letter spacing [\#44](https://github.com/untile/filecoin-retrieval-market-website/pull/44) ([tiago258](https://github.com/tiago258))
 - Update RoadmapSection [\#43](https://github.com/untile/filecoin-retrieval-market-website/pull/43) ([tiago258](https://github.com/tiago258))
 
 ## [v0.0.3](https://github.com/untile/filecoin-retrieval-market-website/releases/tag/v0.0.3) (2022-03-24)
