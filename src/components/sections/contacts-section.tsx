@@ -350,7 +350,7 @@ const ContactsSection = ({ data, name }: Props): ReactElement => {
           >
             <ContactLink href={'https://filecoin.io/slack'}>
               <Type.H2 marginBottom={'10px'}>
-                {'Join the Retrieval market Community on Filecoin Slack, #retreival-market'}
+                {'Join the Retrieval market Community on Filecoin Slack, #retrieval-market'}
               </Type.H2>
             </ContactLink>
 
