@@ -51,6 +51,14 @@ To run the project tests (eslint, stylelint, typescript and jest):
 yarn lint
 ```
 
+**Note**
+if you have problems installing dependencies from untile's private packages, you should create a file `.npmrc` with:
+
+```
+//npm.pkg.github.com/:<your-auth-token>
+@untile:registry=https://npm.pkg.github.com
+```
+
 ## Releases
 
 Be sure to have configured `GITHUB_TOKEN` in your globals.
