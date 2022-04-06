@@ -24,6 +24,9 @@ yarn-error.log*
 # vscode
 .vscode
 
+# npm
+.npmrc
+
 # tests
 coverage
 
