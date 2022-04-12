@@ -112,5 +112,9 @@
     "node": ">= 14.17.0",
     "npm": "please-use-yarn",
     "yarn": ">=1.22.0"
+  },
+  "validate-branch-name": {
+    "pattern": "^(bugfix|enhancement|feature|hotfix|support)/.+$",
+    "errorMsg": "Only the following prefixes are allowed: bugfix|enhancement|feature|hotfix|support"
   }
 }
