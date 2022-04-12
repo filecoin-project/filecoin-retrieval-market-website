@@ -19,6 +19,8 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
 
       - name: Setup node
         uses: actions/setup-node@v2
@@ -42,6 +44,11 @@ jobs:
 
       - name: Lint types
         run: yarn lint:types
+
+      - name: Lint commits
+        uses: wagoid/commitlint-github-action@v4
+        with:
+          configFile: .commitlintrc.js
       
       - name: Bundle
         run: yarn bundle
