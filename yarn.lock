@@ -2907,22 +2907,22 @@
     "@typescript-eslint/types" "5.12.1"
     eslint-visitor-keys "^3.0.0"
 
-"@untile/eslint-config-untile-react@^0.0.5":
-  version "0.0.5"
-  resolved "https://npm.pkg.github.com/download/@untile/eslint-config-untile-react/0.0.5/e5ffff6049aea7d1134892cc5375a404f577d5358fd55196770e418ceaea863a#bc21b7e5fe1cb6a500f9b8c8cf54dcbd59f2f423"
-  integrity sha512-guY5Exf2HWZ8NBVvHpTA+NNEFAjw0EzrlgkCoB23uFvQj+3vHZnIC2R6y5MOTa1krPPnSdHJJYcpLZnni+9w/A==
+"@untile/eslint-config-untile-react@^1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@untile/eslint-config-untile-react/-/eslint-config-untile-react-1.0.0.tgz#326f730c2d8efa21c483de4a18cc9f4de950c375"
+  integrity sha512-6e493in1cRe3p+pj2Vgan4k49s5mzwXoSP0c2P0t6eZcopTZ1kuJD6pT4SzTMqOMnBWClAoKe967VzaU6MAQDg==
   dependencies:
-    "@untile/eslint-config-untile" "^0.0.4"
+    "@untile/eslint-config-untile" "^0.0.5"
     babel-eslint "10.1.0"
     eslint-plugin-react "^7.23.1"
     eslint-plugin-react-hooks "^4.2.0"
     eslint-plugin-sort-class-members "^1.9.0"
     eslint-plugin-sort-imports-es6-autofix "^0.6.0"
 
-"@untile/eslint-config-untile@^0.0.4":
-  version "0.0.4"
-  resolved "https://npm.pkg.github.com/download/@untile/eslint-config-untile/0.0.4/6fde72450d1e70d0768fa80ce0ebec9faae338dfe2df5cf29f27b9c79ffbdc63#ca99265a28e9b3646b8f82e03e99ca4eb9e31db7"
-  integrity sha512-M549AdTmKdQfhoU0E8PuWoXVnetc0NY4uv9tsA662ewC2CxnWIg/lj1XN6Vzdgzqgx1N9cYX8FMGJlh8HS5Yig==
+"@untile/eslint-config-untile@^0.0.5":
+  version "0.0.5"
+  resolved "https://registry.yarnpkg.com/@untile/eslint-config-untile/-/eslint-config-untile-0.0.5.tgz#553adcbb289c27df4a5ddf1066635943e162d70e"
+  integrity sha512-PnKDRxFMYZWTiz0loRqui5r4goPurzsgXAoY02pIzyqrYX3JnuyEDDHXJaxVkk9/SnmASebbwlYkyqOQr+SNzw==
   dependencies:
     babel-eslint "10.1.0"
     eslint-plugin-jest "24.3.2"
@@ -2933,10 +2933,10 @@
     eslint-plugin-sql-template "^2.0.0"
     eslint-plugin-switch-case "^1.1.2"
 
-"@untile/react-components@^0.0.1":
-  version "0.0.1"
-  resolved "https://npm.pkg.github.com/download/@untile/react-components/0.0.1/2388317f5b9e0c563fbc92a8be249316502fdd59420adf03ee178ab316b45740#ea31686b680d73839ed902cd4d400123fef9ac5e"
-  integrity sha512-kZYj7hRi79GXDCGJBzKu4sNa9MHCK6A5KrpNffDRAtYyjpv/icPRfl759oJAmNAN1wex7l5PMv11kuLibopGLg==
+"@untile/react-components@^1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@untile/react-components/-/react-components-1.0.0.tgz#dde94c7c38775239ad6a724326bdc80a607c0d36"
+  integrity sha512-d6evaRFuDEQ84kCh4XRwR2B2UYl8lBl/MiqerbI041jsFKnOwGeYyernLkBq3CUpZcpxNz6maNoMchrv6F15yA==
   dependencies:
     color "^3.1.3"
     lodash "^4.17.21"
@@ -2944,10 +2944,10 @@
     styled-normalize "^8.0.7"
     styled-tools "^1.7.2"
 
-"@untile/stylelint-config-untile@^0.0.2":
-  version "0.0.2"
-  resolved "https://npm.pkg.github.com/download/@untile/stylelint-config-untile/0.0.2/1b5442040461d948844d2bdadb111edc0e017faca8e2bc64af27717efb0b6bfc#3443b40ac113ad7b6db165b65a3d33a3a25353cc"
-  integrity sha512-fG6l4rnJLMTaDUJmlr3GA6cFOnRVukQtGApbRLomGxZZzA5ddAXd6u/yW7uWHw2coM5WTWIWVJbqJkck2Qoe/g==
+"@untile/stylelint-config-untile@^1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@untile/stylelint-config-untile/-/stylelint-config-untile-1.0.0.tgz#67f577854b4181576cba93d5fafbf82908064536"
+  integrity sha512-Ypk3tqoyKsOy0B8VYVALeTyG8eCIPowQj98usZ67Kq10wy4HbQKGVaLCXxTHRndvv+skF9Lo6SPw6Iwhj2kUiA==
   dependencies:
     stylelint-config-recommended "^4.0.0"
     stylelint-config-styled-components "^0.1.1"
