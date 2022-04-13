@@ -56,7 +56,7 @@
     ]
   },
   "dependencies": {
-    "@untile/react-components": "^0.0.1",
+    "@untile/react-components": "^1.0.0",
     "airtable": "^0.11.1",
     "countly-sdk-web": "^21.11.2",
     "lodash": "^4.17.21",
@@ -90,8 +90,8 @@
     "@types/styled-components": "^5.1.24",
     "@typescript-eslint/eslint-plugin": "^4.33.0",
     "@typescript-eslint/parser": "^4.33.0",
-    "@untile/eslint-config-untile-react": "^0.0.5",
-    "@untile/stylelint-config-untile": "^0.0.2",
+    "@untile/eslint-config-untile-react": "^1.0.0",
+    "@untile/stylelint-config-untile": "^1.0.0",
     "@uphold/github-changelog-generator": "^1.0.2",
     "eslint": "^7.23.0",
     "eslint-config-next": "^12.0.4",
