@@ -1,5 +1,13 @@
 # Changelog
 
+## [v0.0.7](https://github.com/untile/filecoin-retrieval-market-website/releases/tag/v0.0.7) (2022-04-13)
+- Fix validate-branch-name pattern [\#53](https://github.com/untile/filecoin-retrieval-market-website/pull/53) ([rafaelcruzazevedo](https://github.com/rafaelcruzazevedo))
+- Update validate-branch-name pattern [\#52](https://github.com/untile/filecoin-retrieval-market-website/pull/52) ([rafaelcruzazevedo](https://github.com/rafaelcruzazevedo))
+- Add branch name validation on pre-commit [\#51](https://github.com/untile/filecoin-retrieval-market-website/pull/51) ([tiago258](https://github.com/tiago258))
+- Add commitlint config untile [\#50](https://github.com/untile/filecoin-retrieval-market-website/pull/50) ([tiago258](https://github.com/tiago258))
+- Update untile dependencies [\#48](https://github.com/untile/filecoin-retrieval-market-website/pull/48) ([rafaelcruzazevedo](https://github.com/rafaelcruzazevedo))
+- Update npm auth token [\#47](https://github.com/untile/filecoin-retrieval-market-website/pull/47) ([abelsoares](https://github.com/abelsoares))
+
 ## [v0.0.6](https://github.com/untile/filecoin-retrieval-market-website/releases/tag/v0.0.6) (2022-03-28)
 - Fix typo [\#45](https://github.com/untile/filecoin-retrieval-market-website/pull/45) ([tiago258](https://github.com/tiago258))
 
