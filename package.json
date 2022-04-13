@@ -114,7 +114,7 @@
     "yarn": ">=1.22.0"
   },
   "validate-branch-name": {
-    "pattern": "^(bugfix|enhancement|feature|hotfix|support)/.+$",
-    "errorMsg": "Only the following prefixes are allowed: bugfix|enhancement|feature|hotfix|support"
+    "pattern": "^(bugfix|development|enhancement|feature|hotfix|master|support)/.+$",
+    "errorMsg": "Only the following prefixes are allowed: bugfix|development|enhancement|feature|hotfix|master|support"
   }
 }
