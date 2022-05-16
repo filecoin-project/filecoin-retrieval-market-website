@@ -15,6 +15,7 @@ import {
 } from '@untile/react-components';
 
 import { Element } from 'react-scroll';
+import { WhyNowProps } from 'src/types/api';
 import { ifProp, theme } from 'styled-tools';
 import { useInView } from 'react-intersection-observer';
 import Container from 'src/components/core/layout/container';
@@ -29,8 +30,8 @@ import styled from 'styled-components';
  */
 
 type Props = {
-  name?: string,
-  title: string
+  data: WhyNowProps,
+  name?: string
 };
 
 /**
@@ -170,7 +171,7 @@ const Highlight = styled(Type.H3)`
  * `WhyNowSection` component.
  */
 
-const WhyNowSection = ({ name, title }: Props): ReactElement => {
+const WhyNowSection = ({ data, name }: Props): ReactElement => {
   const isTablet = useBreakpoint('lg', 'max');
   const [ref, inView] = useInView({
     threshold: 1,
@@ -208,7 +209,7 @@ const WhyNowSection = ({ name, title }: Props): ReactElement => {
               }}
             >
               <Type.H2>
-                {title}
+                {data?.title}
               </Type.H2>
             </FadeInUpAnimation>
           </Box>
@@ -225,7 +226,7 @@ const WhyNowSection = ({ name, title }: Props): ReactElement => {
               }}
             >
               <RawHtml element={Highlight}>
-                {'By <span>2025</span> the global CDN market is expected to be twice as large as the cloud object storage market.'}
+                {data?.subtitle}
               </RawHtml>
             </FadeInUpAnimation>
           </Box>
@@ -275,7 +276,7 @@ const WhyNowSection = ({ name, title }: Props): ReactElement => {
               }}
             >
               <Type.H3>
-                {'That is, delivering files to be people quickly and reliably is a bigger market than storing those files in the first place. This makes sense since we all expect video, and image feeds to load instantly wherever we are in the world.'}
+                {data?.how}
               </Type.H3>
             </FadeInUpAnimation>
           </Box>
@@ -304,7 +305,7 @@ const WhyNowSection = ({ name, title }: Props): ReactElement => {
               }}
             >
               <Type.H3>
-                {'Not only is a decentralised CDN essential for the Web3 movement, it can also provide some efficiencies that are not within easy reach for traditional CDNs like Cloudflare and Akamai. p2p content sharing, especially in the “last mile”, and the ability of nodes emerging in sparely populated geographies are a few such efficiencies.'}
+                {data?.why}
               </Type.H3>
             </FadeInUpAnimation>
           </Box>
