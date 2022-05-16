@@ -376,7 +376,7 @@ const ProjectsOpportunitiesSection = ({ data, name }: Props): ReactElement => {
                 }}
               >
                 <Type.H2>
-                  {'Projects'}
+                  {'Grants'}
                 </Type.H2>
               </FadeInUpAnimation>
             </Box>
