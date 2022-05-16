@@ -22,6 +22,8 @@ import React, {
 
 import SwiperCore, {
   Controller,
+  Keyboard,
+  Mousewheel,
   Parallax,
   Scrollbar,
   SwiperOptions
@@ -38,7 +40,9 @@ import swiperStyles from 'swiper/swiper-bundle.css';
 SwiperCore.use([
   Controller,
   Parallax,
-  Scrollbar
+  Scrollbar,
+  Keyboard,
+  Mousewheel
 ]);
 
 /**
@@ -172,6 +176,7 @@ const Carousel: FC<CarouselProps> = forwardRef<any, CarouselProps>((props: Carou
 
       <Swiper
         {...normalizedCarouselConfig}
+        mousewheel
         onSlideChange={handleSlideChange}
         ref={ref}
         scrollbar={{
