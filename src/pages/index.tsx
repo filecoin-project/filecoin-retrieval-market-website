@@ -55,11 +55,14 @@ const Home = ({ data }: Props): ReactElement => {
         />
 
         <WhyNowSection
+          data={data?.whyNow}
           name={sectionsIds.sectionWhyNow}
-          title={data?.content?.whyNowDescription}
         />
 
-        <WhatWeDoSection name={sectionsIds.sectionWhatWeDo} />
+        <WhatWeDoSection
+          data={data?.whatWeDo}
+          name={sectionsIds.sectionWhatWeDo}
+        />
 
         <ProgressSection
           data={data?.progress}
