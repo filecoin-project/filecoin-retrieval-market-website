@@ -76,6 +76,26 @@ export interface TeamProps {
 }
 
 /**
+ * Export `WhatWeDoProps` interface.
+ */
+
+export interface WhatWeDoProps {
+  subtitle: string;
+  title: string;
+}
+
+/**
+ * Export `WhyNowProps` interface.
+ */
+
+export interface WhyNowProps {
+  how: string;
+  subtitle: string;
+  title: string;
+  why: string;
+}
+
+/**
  * Export `APIResponse` type.
  */
 
@@ -85,5 +105,7 @@ export type APIResponse = {
   projectsOpportunities: ProjectProps[] | null,
   roadmap: RoadmapProps[] | null,
   settings: SettingProps[] | null,
-  teams: TeamProps[] | null
+  teams: TeamProps[] | null,
+  whatWeDo: WhatWeDoProps | null,
+  whyNow: WhyNowProps | null
 };
