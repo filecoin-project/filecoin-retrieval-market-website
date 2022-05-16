@@ -40,6 +40,8 @@ export async function getTableRecords(tableName: string) {
 export async function getRecords() {
   const content = await getTableRecords('content');
   const settings = await getTableRecords('settings');
+  const whyNow = await getTableRecords('whyNow');
+  const whatWeDo = await getTableRecords('whatWeDo');
   const roadmap = await getTableRecords('roadmap');
   const teams = await getTableRecords('teams');
   const projectsOpportunities = await getTableRecords('projectsOpportunities');
@@ -51,6 +53,8 @@ export async function getRecords() {
     projectsOpportunities,
     roadmap,
     settings,
-    teams
+    teams,
+    whatWeDo: head(whatWeDo),
+    whyNow: head(whyNow)
   };
 }
