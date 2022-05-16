@@ -6,6 +6,7 @@
 import { Badge } from 'src/components/core/badge';
 import { Box, Type, media, units, useBreakpoint } from '@untile/react-components';
 import { Element } from 'react-scroll';
+import { WhatWeDoProps } from 'src/types/api';
 import Container from 'src/components/core/layout/container';
 import FadeInUpAnimation from 'src/components/core/animations/fade-in-up';
 import React, { ReactElement } from 'react';
@@ -17,7 +18,8 @@ import styled from 'styled-components';
  */
 
 type Props = {
-  name?: string
+  data: WhatWeDoProps
+  name?: string,
 };
 
 /**
@@ -60,7 +62,7 @@ const Grid = styled.div`
  * `WhatWeDoSection` component.
  */
 
-const WhatWeDoSection = ({ name }: Props): ReactElement => {
+const WhatWeDoSection = ({ data, name }: Props): ReactElement => {
   const isTablet = useBreakpoint('lg', 'max');
 
   return (
@@ -94,7 +96,7 @@ const WhatWeDoSection = ({ name }: Props): ReactElement => {
               }}
             >
               <Type.H2>
-                {'The Filecoin Retrieval Market initiative is building a decentralised CDN for the Filecoin Network.'}
+                {data?.title}
               </Type.H2>
             </FadeInUpAnimation>
           </Box>
@@ -107,7 +109,7 @@ const WhatWeDoSection = ({ name }: Props): ReactElement => {
               }}
             >
               <Type.H3>
-                {'The approach to do this is in a modular way with many teams contributing. The Retrieval Market Working Group (RMWG) consists of teams tackling challenging problems in the space, ranging from ultra fast payments, to data transfer protocol enhancements and cryptoeconomic models for data retrieval.'}
+                {data?.subtitle}
               </Type.H3>
             </FadeInUpAnimation>
           </Box>
