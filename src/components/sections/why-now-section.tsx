@@ -22,7 +22,7 @@ import FadeInUpAnimation from 'src/components/core/animations/fade-in-up';
 import NodesSection from './nodes-section';
 import React, { ReactElement } from 'react';
 import StaticNavbar from 'src/components/static-navbar';
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 
 /**
  * `Props` type.
@@ -150,26 +150,6 @@ const BigImageWrapper = styled.div`
 `;
 
 /**
- * `Label` styled component.
- */
-
-const Label = styled(Type.H3)<{ isVisible?: boolean }>`
-  ${media.max('lg')`
-    opacity: 0;
-    position: absolute;
-    right: 0;
-    top: 46%;
-    transform: translateY(-100%);
-    transition: opacity ${theme('animations.defaultTransition')};
-    transition-delay: 2s;
-
-    ${ifProp('isVisible', css`
-      opacity: 1;
-    `)}
-  `}
-`;
-
-/**
  * `Highlight` styled component.
  */
 
@@ -266,10 +246,6 @@ const WhyNowSection = ({ name, title }: Props): ReactElement => {
                     alt={'By 2025 the global CDN market is expected to be twice as large as the cloud object storage market.'}
                     src={'/static/images/pattern-big.png'}
                   />
-
-                  <Type.H3>
-                    {'x2'}
-                  </Type.H3>
                 </BigImageWrapper>
               </AnimatedGrid>
             )}
@@ -283,13 +259,6 @@ const WhyNowSection = ({ name, title }: Props): ReactElement => {
                   alt={'By 2025 the global CDN market is expected to be twice as large as the cloud object storage market.'}
                   src={'/static/images/pattern-mobile.png'}
                 />
-
-                <Label
-                  isVisible={inView}
-                  ref={ref}
-                >
-                  {'x2'}
-                </Label>
               </AnimatedGrid>
             )}
           </AnimatedGridWrapper>
