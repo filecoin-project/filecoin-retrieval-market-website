@@ -358,7 +358,7 @@ const ProjectsOpportunitiesSection = ({ data, name }: Props): ReactElement => {
             }}
           >
             <StyledBadge variant={'outline'}>
-              {'Progress'}
+              {'Projects & Opportunities'}
             </StyledBadge>
           </FadeInUpAnimation>
         )}
