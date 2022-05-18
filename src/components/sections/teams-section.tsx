@@ -24,7 +24,8 @@ import styled from 'styled-components';
 
 type Props = {
   data: TeamProps[],
-  name?: string
+  name?: string,
+  title?: string
 };
 
 /**
@@ -115,7 +116,7 @@ const carouselConfig = {
  * `TeamsSection` component.
  */
 
-const TeamsSection = ({ data, name }: Props): ReactElement | null => {
+const TeamsSection = ({ data, name, title }: Props): ReactElement | null => {
   const isTablet = useBreakpoint('lg', 'max');
   const { activeCard } = useMemo(() => ({
     activeCard: filter(data, { active: true })
@@ -168,7 +169,7 @@ const TeamsSection = ({ data, name }: Props): ReactElement | null => {
             }}
           >
             <Type.H2>
-              {'Many teams are already working on Retrieval Markets.'}
+              {title}
             </Type.H2>
           </FadeInUpAnimation>
         </Box>
