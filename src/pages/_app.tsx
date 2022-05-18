@@ -144,7 +144,7 @@ const PageApp = (props: AppProps): ReactElement => {
 
         <Component {...pageProps} />
 
-        <CookiesBar />
+        <CookiesBar data={pageProps?.data?.settings} />
       </ThemeProvider>
     </>
   );
