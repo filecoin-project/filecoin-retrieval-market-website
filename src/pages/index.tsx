@@ -77,6 +77,7 @@ const Home = ({ data }: Props): ReactElement => {
         <TeamsSection
           data={data?.teams}
           name={sectionsIds.sectionTeams}
+          title={data?.content?.teamsTitle}
         />
 
         <RoadmapSection
