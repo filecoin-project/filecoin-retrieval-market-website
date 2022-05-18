@@ -20,6 +20,7 @@ import React, {
 
 import SwiperCore, {
   Controller,
+  Mousewheel,
   Parallax,
   Scrollbar,
   SwiperOptions
@@ -34,6 +35,7 @@ import swiperStyles from 'swiper/swiper-bundle.css';
 
 SwiperCore.use([
   Controller,
+  Mousewheel,
   Parallax,
   Scrollbar
 ]);
@@ -158,6 +160,9 @@ const Slider: FC<SliderProps> = forwardRef<any, SliderProps>((props: SliderProps
       <GlobalStyle />
 
       <Swiper
+        mousewheel={{
+          forceToAxis: true
+        }}
         onSlideChange={handleSlideChange}
         ref={ref}
         scrollbar={{
