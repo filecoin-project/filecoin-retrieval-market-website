@@ -176,7 +176,9 @@ const Carousel: FC<CarouselProps> = forwardRef<any, CarouselProps>((props: Carou
 
       <Swiper
         {...normalizedCarouselConfig}
-        mousewheel
+        mousewheel={{
+          forceToAxis: true
+        }}
         onSlideChange={handleSlideChange}
         ref={ref}
         scrollbar={{
