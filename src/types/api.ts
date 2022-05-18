@@ -89,6 +89,10 @@ export interface WhatWeDoProps {
  */
 
 export interface WhyNowProps {
+  buttonOneLabel?: string;
+  buttonOneUrl?: string;
+  buttonTwoLabel?: string;
+  buttonTwoUrl?: string;
   how: string;
   subtitle: string;
   title: string;
