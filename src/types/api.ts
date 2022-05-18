@@ -52,7 +52,7 @@ export interface RoadmapProps {
 
 export interface SettingProps {
   value: string;
-  type: 'email' | 'social-network' | 'footer-link';
+  type: 'cookies-button-link' | 'email' | 'social-network' | 'footer-link';
   name: string;
 }
 
