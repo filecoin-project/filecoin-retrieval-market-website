@@ -77,7 +77,7 @@ const carouselConfig = {
       spaceBetween: 18
     },
     480: {
-      slidesPerView: 1.5,
+      slidesPerView: 1.4,
       spaceBetween: 18
     },
     576: {
@@ -89,19 +89,23 @@ const carouselConfig = {
       spaceBetween: 18
     },
     992: {
-      slidesPerView: 2.75,
+      slidesPerView: 2.85,
       spaceBetween: 18
     },
     1200: {
-      slidesPerView: 3.2,
+      slidesPerView: 3.35,
       spaceBetween: 30
     },
     1440: {
-      slidesPerView: 3.9,
+      slidesPerView: 3.85,
       spaceBetween: 50
     },
     1920: {
-      slidesPerView: 4.1,
+      slidesPerView: 5.1,
+      spaceBetween: 50
+    },
+    2500: {
+      slidesPerView: 6.8,
       spaceBetween: 50
     }
   }
