@@ -18,6 +18,7 @@ import { Element } from 'react-scroll';
 import { WhyNowProps } from 'src/types/api';
 import { ifProp, theme } from 'styled-tools';
 import { useInView } from 'react-intersection-observer';
+import Button from 'src/components/core/buttons/button';
 import Container from 'src/components/core/layout/container';
 import FadeInUpAnimation from 'src/components/core/animations/fade-in-up';
 import NodesSection from './nodes-section';
@@ -168,6 +169,21 @@ const Highlight = styled(Type.H3)`
 `;
 
 /**
+ * `ButtonsWrapper` styled component.
+ */
+
+const ButtonsWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  grid-gap: ${units(2.5)};
+  padding-top: 46px;
+
+  ${media.min('sm')`
+    flex-direction: row;
+  `}
+`;
+
+/**
  * `WhyNowSection` component.
  */
 
@@ -228,6 +244,28 @@ const WhyNowSection = ({ data, name }: Props): ReactElement => {
               <RawHtml element={Highlight}>
                 {data?.subtitle}
               </RawHtml>
+
+              {(data?.buttonOneUrl || data?.buttonTwoUrl) && (
+                <ButtonsWrapper>
+                  {data?.buttonOneUrl && (
+                    <Button
+                      colorTheme={'secondary'}
+                      href={data?.buttonOneUrl}
+                    >
+                      {data?.buttonOneLabel}
+                    </Button>
+                  )}
+
+                  {data?.buttonTwoUrl && (
+                    <Button
+                      colorTheme={'secondary'}
+                      href={data?.buttonTwoUrl}
+                    >
+                      {data?.buttonTwoLabel}
+                    </Button>
+                  )}
+                </ButtonsWrapper>
+              )}
             </FadeInUpAnimation>
           </Box>
 
