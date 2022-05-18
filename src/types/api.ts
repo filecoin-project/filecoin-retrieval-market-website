@@ -6,6 +6,7 @@
 export interface ContentProps {
   whyNowDescription: string;
   homeDescription: string;
+  teamsTitle: string;
 }
 
 /**
