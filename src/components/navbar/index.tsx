@@ -13,31 +13,35 @@ import {
 } from '@untile/react-components';
 
 import { Link } from 'react-scroll';
+import { ifProp, theme } from 'styled-tools';
 import { navbarLinks } from 'src/core/content-config/navbar';
 import { routes } from 'src/core/routes';
-import { theme } from 'styled-tools';
 import Button from 'src/components/core/buttons/button';
 import Container from 'src/components/core/layout/container';
 import HamburgerMenu from './hamburger-menu';
-import React, { ReactElement, useCallback, useEffect, useState } from 'react';
+import React, { ReactElement, useCallback, useEffect, useMemo, useState } from 'react';
 import RouterLink from 'src/components/core/links/router-link';
 import Sidebar from './sidebar';
 import map from 'lodash/map';
 import size from 'lodash/size';
 import styled from 'styled-components';
+import useScroll from 'src/hooks/use-scroll';
 
 /**
  * `Nav` styled component.
  */
 
-const Nav = styled.nav`
+const Nav = styled.nav<{ hasBackground?: boolean }>`
   align-items: center;
+  background-color: ${ifProp('hasBackground', color('blue900'), 'transparent')};
   height: ${theme('dimensions.navbarHeightMobile')}px;
   left: 0;
   padding: 18px 0;
   position: fixed;
   right: 0;
   top: 0;
+  transition: ${theme('animations.defaultTransition')};
+  transition-property: background-color;
   z-index: ${theme('zIndex.navbar')};
 
   ${media.min('md')`
@@ -140,6 +144,7 @@ const StyledSidebar = styled(Sidebar)`
 
 const Navbar = (): ReactElement => {
   const isMobile = useBreakpoint('lg', 'max');
+  const { yPos } = useScroll();
   const [isSidebarOpen, setSidebarOpen] = useState<boolean>();
   const handleSidebar = useCallback(() => {
     if (isSidebarOpen) {
@@ -157,8 +162,16 @@ const Navbar = (): ReactElement => {
     }
   }, [isMobile, isSidebarOpen]);
 
+  const isScrolled = useMemo(() => {
+    if (isMobile) {
+      return yPos > 15;
+    }
+
+    return yPos > 80;
+  }, [isMobile, yPos]);
+
   return (
-    <Nav>
+    <Nav hasBackground={isScrolled && !isSidebarOpen}>
       <Container>
         <ContentWrapper>
           <LogoLink href={routes.home}>
