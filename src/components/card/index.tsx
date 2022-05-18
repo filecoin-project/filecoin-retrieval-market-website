@@ -6,7 +6,8 @@
 import { Image, Type, color, media, units } from '@untile/react-components';
 import { theme } from 'styled-tools';
 import Arrow from 'src/components/core/arrow';
-import React, { ReactElement } from 'react';
+import React, { ReactElement, useMemo } from 'react';
+import isEmpty from 'lodash/isEmpty';
 import map from 'lodash/map';
 import styled from 'styled-components';
 
@@ -84,6 +85,10 @@ const StyledImage = styled(Image)`
   margin-bottom: ${units(9)};
 `;
 
+/**
+ * `Content` styled component.
+ */
+
 const Content = styled.div`
   display: grid;
   grid-template-rows: minmax(100px, max-content) max-content;
@@ -103,6 +108,9 @@ const Content = styled.div`
 
 const Card = (props: Props): ReactElement => {
   const { description, iconImage, subtitle, title, url } = props;
+  const hasIconImage = useMemo(() => {
+    return map(iconImage, ({ url }) => ({ url }));
+  }, [iconImage]);
 
   return (
     <Link href={url}>
@@ -112,6 +120,10 @@ const Card = (props: Props): ReactElement => {
           key={id}
         />
       ))}
+
+      {isEmpty(hasIconImage) && (
+        <StyledImage defaultUrl={'/static/images/team-default.png'} />
+      )}
 
       <Content>
         <div>
