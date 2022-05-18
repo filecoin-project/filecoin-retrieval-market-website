@@ -41,11 +41,15 @@ type Props = {
 
 const Section = styled(Element).attrs({ as: 'section' })`
   min-height: 100vh;
-  padding: ${units(14.5)}  0 ${units(2.5)};
+  padding: ${units(17.5)} 0 ${units(2.5)};
   position: relative;
 
   ${media.min('md')`
-    padding: clamp(${units(15)}, 8vw, 8vw) 0 ${units(12.5)};
+    padding: 150px 0 0;
+  `}
+
+  ${media.min('lg')`
+    padding-bottom: ${units(12.5)};
   `}
 `;
 

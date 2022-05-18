@@ -42,15 +42,15 @@ const slideTransition = 1000;
  */
 
 const Section = styled(Element).attrs({ as: 'section' })`
-  padding: clamp(${units(12)}, 28vw, 28vw) 0 ${units(12)};
+  padding: ${units(12.5)} 0 ${units(12)};
   position: relative;
 
-  ${media.min('sm')`
-    padding: clamp(${units(12)}, 18vw, 18vw) 0 ${units(12)};
+  ${media.min('md')`
+    padding: 130px 0 0;
   `}
 
-  ${media.min('md')`
-    padding: clamp(${units(17.5)}, 9.5vw, 9.5vw) 0 ${units(12)};
+  ${media.min('lg')`
+    padding-bottom: ${units(12.5)};
   `}
 `;
 
