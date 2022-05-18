@@ -380,19 +380,19 @@ const ContactsSection = ({ data, name }: Props): ReactElement => {
             ))}
           </FooterLinksWrapper>
 
-          <Box gridArea={'contactLink'}>
-            <ContactLabel>
-              {'Contacts'}
-            </ContactLabel>
+          {emailContact?.value && (
+            <Box gridArea={'contactLink'}>
+              <ContactLabel>
+                {'Contacts'}
+              </ContactLabel>
 
-            {emailContact?.value && (
               <ContactLink href={`mailto:${emailContact.value}`}>
                 <MailLabel>
                   {emailContact?.name}
                 </MailLabel>
               </ContactLink>
-            )}
-          </Box>
+            </Box>
+          )}
 
           <AuthorWrapper>
             <SmallLabel>
