@@ -3,14 +3,24 @@
  * Module dependencies.
  */
 
+import { SettingProps } from 'src/types/api';
 import { Svg, Type, color, media, units } from '@untile/react-components';
 import { parseCookies, setCookie } from 'nookies';
 import { switchProp, theme } from 'styled-tools';
 import Button from 'src/components/core/buttons/button';
-import React, { ReactElement, useCallback, useEffect, useState } from 'react';
+import React, {
+  ReactElement,
+  useCallback,
+  useEffect,
+  useMemo,
+  useState
+} from 'react';
+
 import Transition from 'react-transition-group/Transition';
 import UnderlineLink from 'src/components/core/links/underline-link';
 import closeIcon from 'src/assets/svg/close.svg';
+import filter from 'lodash/filter';
+import head from 'lodash/head';
 import styled, { css } from 'styled-components';
 
 /**
@@ -24,6 +34,14 @@ const cookieName = 'accept-cookies';
  */
 
 const duration = 500;
+
+/**
+ * `Props` type.
+ */
+
+type Props = {
+  data: SettingProps[]
+};
 
 /**
  * `Wrapper` styled component.
@@ -120,7 +138,7 @@ const CloseButton = styled.button`
  * `CookiesBar` component.
  */
 
-const CookiesBar = (): ReactElement | null => {
+const CookiesBar = ({ data }: Props): ReactElement | null => {
   const cookies = parseCookies();
   const [visible, setVisible] = useState<boolean>(false);
   const handleAcceptTerms = useCallback(() => {
@@ -136,6 +154,10 @@ const CookiesBar = (): ReactElement | null => {
       setVisible(true);
     }
   }, [cookies]);
+
+  const { cookiesButtonLink } = useMemo(() => ({
+    cookiesButtonLink: head(filter(data, { type: 'cookies-button-link' }))
+  }), [data]);
 
   return (
     <Transition
@@ -156,12 +178,14 @@ const CookiesBar = (): ReactElement | null => {
                 {'Accept'}
               </Button>
 
-              <UnderlineLink
-                href={'https://google.com'}
-                size={'small'}
-              >
-                {'Read More'}
-              </UnderlineLink>
+              {cookiesButtonLink?.value && (
+                <UnderlineLink
+                  href={cookiesButtonLink?.value}
+                  size={'small'}
+                >
+                  {cookiesButtonLink?.name}
+                </UnderlineLink>
+              )}
             </ButtonsWrapper>
           </Content>
 
