@@ -35,6 +35,10 @@ type Props = {
 const Section = styled.section`
   min-height: 100vh;
   position: relative;
+
+  ${media.min('lg')`
+    margin-bottom: 150px;
+  `}
 `;
 
 /**

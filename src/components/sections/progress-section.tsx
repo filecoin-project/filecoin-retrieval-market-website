@@ -38,7 +38,11 @@ const Section = styled(Element).attrs({ as: 'section' })`
   position: relative;
 
   ${media.min('md')`
-    padding: clamp(${units(17.5)}, 9.5vw, 9.5vw) 0 110px;
+    padding: 150px 0 0;
+  `}
+
+  ${media.min('lg')`
+    padding-bottom: ${units(12.5)};
   `}
 `;
 
