@@ -261,12 +261,12 @@ const RoadmapSection = ({ data, name }: Props): ReactElement | null => {
                           {day}
                         </Title>
 
-                        <Type.H3
+                        <Type.H2
                           gridArea={'description'}
                           gridRow={'4 / 5'}
                         >
                           {description}
-                        </Type.H3>
+                        </Type.H2>
                       </Grid>
                     </Slide>
                   );
