@@ -7,7 +7,7 @@ import { Badge } from 'src/components/core/badge';
 import { ifProp, theme } from 'styled-tools';
 import { media, units } from '@untile/react-components';
 import { navbarLinks } from 'src/core/content-config/navbar';
-import FadeInAnimation from '../core/animations/fade-in';
+import FadeInAnimation from 'src/components/core/animations/fade-in';
 import React from 'react';
 import map from 'lodash/map';
 import styled from 'styled-components';
