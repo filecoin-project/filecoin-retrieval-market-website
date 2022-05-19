@@ -15,6 +15,7 @@ export type NavbarLink = {
 export const sectionsIds = {
   sectionContact: 'sectionContact',
   sectionDotsGrid: 'sectionDotsGrid',
+  sectionLearnMore: 'sectionLearnMore',
   sectionProgress: 'sectionProgress',
   sectionProjectsAndOpportunities: 'sectionProjectsAndOpportunities',
   sectionRoadmap: 'sectionRoadmap',
@@ -47,6 +48,6 @@ export const navbarLinks: NavbarLink[] = [{
   id: sectionsIds.sectionRoadmap,
   label: 'Roadmap'
 }, {
-  id: sectionsIds.sectionContact,
-  label: 'Contact'
+  id: sectionsIds.sectionLearnMore,
+  label: 'Learn More'
 }];
