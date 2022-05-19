@@ -10,6 +10,16 @@ export interface ContentProps {
 }
 
 /**
+ * Export `LearnMoreProps` interface.
+ */
+
+export interface LearnMoreProps {
+  subtitle: string;
+  title: string;
+  videoUrl: string;
+}
+
+/**
  * Export `ProgressProps` interface.
  */
 
@@ -106,6 +116,7 @@ export interface WhyNowProps {
 
 export type APIResponse = {
   content: ContentProps | null,
+  learnMore: LearnMoreProps | null,
   progress: ProgressProps[] | null,
   projectsOpportunities: ProjectProps[] | null,
   roadmap: RoadmapProps[] | null,
