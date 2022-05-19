@@ -32,7 +32,6 @@ import useScroll from 'src/hooks/use-scroll';
  */
 
 const Nav = styled.nav<{ hasBackground?: boolean }>`
-  align-items: center;
   background-color: ${ifProp('hasBackground', color('blue900'), 'transparent')};
   height: ${theme('dimensions.navbarHeightMobile')}px;
   left: 0;
@@ -46,8 +45,20 @@ const Nav = styled.nav<{ hasBackground?: boolean }>`
 
   ${media.min('md')`
     height: ${theme('dimensions.navbarHeight')}px;
-    padding: ${units(5)} 0 10px;
+    padding: 30px 0;
   `}
+
+  ${media.min('lg')`
+    padding: 10px 0;
+  `}
+`;
+
+/**
+ * `StyledContainer` styled component.
+ */
+
+const StyledContainer = styled(Container)`
+  height: 100%;
 `;
 
 /**
@@ -55,10 +66,11 @@ const Nav = styled.nav<{ hasBackground?: boolean }>`
  */
 
 const ContentWrapper = styled.div`
-  align-items: flex-start;
+  align-items: center;
   display: grid;
   grid-gap: ${units(4)};
   grid-template-columns: max-content 1fr;
+  height: 100%;
 `;
 
 /**
@@ -67,12 +79,16 @@ const ContentWrapper = styled.div`
 
 const LogoLink = styled(RouterLink)`
   color: ${color('white')};
-  height: ${units(6)};
+  height: ${units(7.5)};
   transition: opacity ${theme('animations.defaultTransition')};
   z-index: ${theme('zIndex.menuLogo')};
 
   ${media.max('sm')`
     position: relative;
+  `}
+
+  ${media.min('lg')`
+    height: 70px;
   `}
 
   &:focus,
@@ -99,6 +115,7 @@ const StyledImage = styled(Image)`
  */
 
 const Actions = styled.div<{ size: number }>`
+  align-items: center;
   display: flex;
   justify-content: space-between;
   justify-self: flex-end;
@@ -172,7 +189,7 @@ const Navbar = (): ReactElement => {
 
   return (
     <Nav hasBackground={isScrolled && !isSidebarOpen}>
-      <Container>
+      <StyledContainer>
         <ContentWrapper>
           <LogoLink href={routes.home}>
             <StyledImage defaultUrl={'/static/images/logo.png'} />
@@ -199,7 +216,7 @@ const Navbar = (): ReactElement => {
             )}
           </Actions>
         </ContentWrapper>
-      </Container>
+      </StyledContainer>
 
       <StyledSidebar
         isOpen={isSidebarOpen}
