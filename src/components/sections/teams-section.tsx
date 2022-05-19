@@ -33,7 +33,7 @@ type Props = {
  */
 
 const Section = styled(Element).attrs({ as: 'section' })`
-  padding: ${units(15)}  0 ${units(2.5)};
+  padding: ${units(15)} 0 ${units(2.5)};
   position: relative;
 
   ${media.min('md')`
