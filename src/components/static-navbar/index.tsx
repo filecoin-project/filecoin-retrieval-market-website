@@ -41,8 +41,8 @@ const Wrapper = styled.div`
   ${media.min('md')`
     grid-template-columns: 70px 1fr;
     height: ${theme('dimensions.navbarHeight')}px;
-    padding-bottom: 10px;
-    padding-top: ${units(5)};
+    padding-bottom: 5px;
+    padding-top: 45px;
   `}
 
   ${media.min('lg')`
