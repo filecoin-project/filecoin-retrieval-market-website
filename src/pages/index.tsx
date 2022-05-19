@@ -10,6 +10,7 @@ import { getRecords } from 'src/core/api/airtable';
 import { sectionsIds } from 'src/core/content-config/navbar';
 import ContactsSection from 'src/components/sections/contacts-section';
 import IntroSection from 'src/components/sections/intro-section';
+import LearnMoreSection from 'src/components/sections/learn-more-section';
 import Metatags from 'src/components/core/metatags';
 import ProgressSection from 'src/components/sections/progress-section';
 import ProjectsOpportunitiesSection from 'src/components/sections/projects-opportunities-section';
@@ -83,6 +84,11 @@ const Home = ({ data }: Props): ReactElement => {
         <RoadmapSection
           data={data?.roadmap}
           name={sectionsIds.sectionRoadmap}
+        />
+
+        <LearnMoreSection
+          data={data?.learnMore}
+          name={sectionsIds.sectionLearnMore}
         />
       </BodyGradient>
 
