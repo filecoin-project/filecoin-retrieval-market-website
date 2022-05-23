@@ -3,11 +3,20 @@
  * Module dependencies.
  */
 
-import { Svg } from '@untile/react-components';
-import { theme } from 'styled-tools';
+import { Svg, media, units } from '@untile/react-components';
+import { ifProp, theme } from 'styled-tools';
 import React, { ReactElement } from 'react';
 import arrowIcon from 'src/assets/svg/arrow.svg';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
+
+/**
+ * `Props` type.
+ */
+
+type Props = {
+  isSmall?: boolean,
+  size?: string
+};
 
 /**
  * `VisibleArrow` styled component.
@@ -36,14 +45,25 @@ const HiddenArrow = styled(VisibleArrow)`
  * `Wrapper` styled component.
  */
 
-const Wrapper = styled.div`
+const Wrapper = styled.div<{ isSmall?: boolean }>`
   cursor: pointer;
   display: inline-block;
-  height: 30px;
   overflow: hidden;
   position: relative;
   text-decoration: none;
-  width: 30px;
+
+  ${ifProp('isSmall', css`
+    height: 10px;
+    width: 10px;
+
+    ${media.min('ms')`
+      height: ${units(2.5)};
+      width: ${units(2.5)};
+    `}
+  `, css`
+    height: 30px;
+    width: 30px;
+  `)}
 
   &:focus,
   &:hover {
@@ -63,17 +83,17 @@ const Wrapper = styled.div`
  * `Arrow` component.
  */
 
-const Arrow = (): ReactElement => {
+const Arrow = ({ isSmall, size }: Props): ReactElement => {
   return (
-    <Wrapper>
+    <Wrapper isSmall={isSmall}>
       <VisibleArrow
         icon={arrowIcon}
-        size={'30px'}
+        size={size ?? '30px'}
       />
 
       <HiddenArrow
         icon={arrowIcon}
-        size={'30px'}
+        size={size ?? '30px'}
       />
     </Wrapper>
   );
