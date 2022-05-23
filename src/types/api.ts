@@ -51,9 +51,9 @@ export interface ProjectProps {
 
 export interface RoadmapProps {
   active: boolean;
-  day: string;
   description: string;
   month: string;
+  year: string;
 }
 
 /**
