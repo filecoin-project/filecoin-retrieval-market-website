@@ -71,8 +71,8 @@ const Grid = styled.div`
   display: grid;
   grid-template-areas:
     'month       month month'
-    'day         day   day'
-    'day         day   day'
+    'year        year  year'
+    'year        year  year'
     'description .     .';
   grid-template-columns: 5fr 1fr 4fr;
   grid-template-rows: max-content 38px repeat(2, max-content) ${units(2)};
@@ -84,8 +84,8 @@ const Grid = styled.div`
   ${media.min('lg')`
     grid-template-areas:
       '. month       month month .'
-      '. day         day   day   .'
-      '. day         day   day   .'
+      '. year        year  year  .'
+      '. year        year  year  .'
       '. description .     .     .';
     grid-template-columns: 1fr 4fr repeat(2, 3fr) 1fr;
     grid-template-rows: max-content ${units(7)} 1fr max-content ${units(6)};
@@ -100,8 +100,8 @@ const Grid = styled.div`
   ${media.min('xxl')`
     grid-template-areas:
       '. month       month month .'
-      '. day         day   day   .'
-      '. day         day   day   .'
+      '. year        year  year  .'
+      '. year        year  year  .'
       '. description .     .     .';
     grid-template-columns: 1fr 4fr repeat(2, 3fr) 1fr;
   `}
@@ -127,6 +127,21 @@ const Title = styled(Display1)`
     margin-left: -${units(3.5)};
     letter-spacing: -28px;
   `}
+
+  @media only screen and (max-width: 374px) {
+    font-size: 140px;
+    line-height: 150px;
+  }
+`;
+
+/**
+ * `Year` styled component.
+ */
+
+const Year = styled(Title)`
+  @media only screen and (min-width: 823px) and (max-width: 1500px) {
+    font-size: 22vw;
+  }
 
   @media only screen and (max-width: 374px) {
     font-size: 140px;
@@ -233,7 +248,7 @@ const RoadmapSection = ({ data, name }: Props): ReactElement | null => {
                 totalItems={size(activeItem)}
               >
                 {map(activeItem, (props: RoadmapProps, index: number) => {
-                  const { day, description, month } = props;
+                  const { description, month, year } = props;
 
                   return (
                     <Slide key={index}>
@@ -248,9 +263,9 @@ const RoadmapSection = ({ data, name }: Props): ReactElement | null => {
                           {isMobile && month.length > 3 ? concat(slice(month, 0, 3), '.') : month}
                         </Title>
 
-                        <Title
+                        <Year
                           data-swiper-parallax={-750}
-                          gridArea={'day'}
+                          gridArea={'year'}
                           gridRow={'2 / 4'}
                           gridRowLg={'2 / 6'}
                           marginBottom={units(1)}
@@ -258,8 +273,8 @@ const RoadmapSection = ({ data, name }: Props): ReactElement | null => {
                           marginBottomMs={units(6.5)}
                           textAlign={'right'}
                         >
-                          {day}
-                        </Title>
+                          {year}
+                        </Year>
 
                         <Type.H2
                           gridArea={'description'}
