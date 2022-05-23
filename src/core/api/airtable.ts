@@ -47,9 +47,11 @@ export async function getRecords() {
   const projectsOpportunities = await getTableRecords('projectsOpportunities');
   const progress = await getTableRecords('progress');
   const learnMore = await getTableRecords('learnMore');
+  const event = await getTableRecords('event');
 
   return {
     content: head(content),
+    event: head(event),
     learnMore: head(learnMore),
     progress,
     projectsOpportunities,
