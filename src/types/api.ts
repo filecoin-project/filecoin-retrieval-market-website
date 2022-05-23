@@ -10,6 +10,17 @@ export interface ContentProps {
 }
 
 /**
+ * Export `EventProps` interface.
+ */
+
+export interface EventProps {
+  active: boolean;
+  description: string;
+  link: string;
+  title: string;
+}
+
+/**
  * Export `LearnMoreProps` interface.
  */
 
@@ -116,6 +127,7 @@ export interface WhyNowProps {
 
 export type APIResponse = {
   content: ContentProps | null,
+  event: EventProps | null,
   learnMore: LearnMoreProps | null,
   progress: ProgressProps[] | null,
   projectsOpportunities: ProjectProps[] | null,
