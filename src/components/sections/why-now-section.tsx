@@ -9,6 +9,7 @@ import {
   RawHtml,
   Type,
   color,
+  isExternalUrl,
   media,
   units,
   useBreakpoint
@@ -255,6 +256,10 @@ const WhyNowSection = ({ data, name }: Props): ReactElement => {
                     <Button
                       colorTheme={'secondary'}
                       href={data?.buttonOneUrl}
+                      {...data?.buttonOneUrl && isExternalUrl(data?.buttonOneUrl) && {
+                        rel: 'noopener',
+                        target: '_blank'
+                      }}
                     >
                       {data?.buttonOneLabel}
                     </Button>
@@ -264,6 +269,10 @@ const WhyNowSection = ({ data, name }: Props): ReactElement => {
                     <Button
                       colorTheme={'secondary'}
                       href={data?.buttonTwoUrl}
+                      {...data?.buttonTwoUrl && isExternalUrl(data?.buttonTwoUrl) && {
+                        rel: 'noopener',
+                        target: '_blank'
+                      }}
                     >
                       {data?.buttonTwoLabel}
                     </Button>
