@@ -51,6 +51,7 @@ const Home = ({ data }: Props): ReactElement => {
 
       <BodyGradient>
         <IntroSection
+          eventData={data?.event}
           nextSectionId={sectionsIds.sectionWhyNow}
           title={data?.content?.homeDescription}
         />
