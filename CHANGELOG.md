@@ -1,5 +1,23 @@
 # Changelog
 
+## [v0.0.8](https://github.com/filecoin-project/filecoin-retrieval-market-website/releases/tag/v0.0.8) (2022-05-25)
+- Add event banner section [\#70](https://github.com/filecoin-project/filecoin-retrieval-market-website/pull/70) ([tiago258](https://github.com/tiago258))
+- Update roadmap section field [\#69](https://github.com/filecoin-project/filecoin-retrieval-market-website/pull/69) ([tiago258](https://github.com/tiago258))
+- Update WhyNowSection buttons [\#68](https://github.com/filecoin-project/filecoin-retrieval-market-website/pull/68) ([tiago258](https://github.com/tiago258))
+- Update navbar alignment [\#67](https://github.com/filecoin-project/filecoin-retrieval-market-website/pull/67) ([tiago258](https://github.com/tiago258))
+- Add learn more section [\#66](https://github.com/filecoin-project/filecoin-retrieval-market-website/pull/66) ([tiago258](https://github.com/tiago258))
+- Fix sections margins [\#65](https://github.com/filecoin-project/filecoin-retrieval-market-website/pull/65) ([tiago258](https://github.com/tiago258))
+- Update roadmap section [\#64](https://github.com/filecoin-project/filecoin-retrieval-market-website/pull/64) ([tiago258](https://github.com/tiago258))
+- Add why now section buttons [\#63](https://github.com/filecoin-project/filecoin-retrieval-market-website/pull/63) ([tiago258](https://github.com/tiago258))
+- Add Navbar background on scroll [\#62](https://github.com/filecoin-project/filecoin-retrieval-market-website/pull/62) ([tiago258](https://github.com/tiago258))
+- Update cookies bar button [\#61](https://github.com/filecoin-project/filecoin-retrieval-market-website/pull/61) ([tiago258](https://github.com/tiago258))
+- Add contacts label validation [\#60](https://github.com/filecoin-project/filecoin-retrieval-market-website/pull/60) ([tiago258](https://github.com/tiago258))
+- Update team section [\#59](https://github.com/filecoin-project/filecoin-retrieval-market-website/pull/59) ([tiago258](https://github.com/tiago258))
+- Add CMS text blocks [\#58](https://github.com/filecoin-project/filecoin-retrieval-market-website/pull/58) ([claudiorodr](https://github.com/claudiorodr))
+- Add horizontal scroll to team section [\#57](https://github.com/filecoin-project/filecoin-retrieval-market-website/pull/57) ([claudiorodr](https://github.com/claudiorodr))
+- Update Project & Opportunities Section [\#56](https://github.com/filecoin-project/filecoin-retrieval-market-website/pull/56) ([claudiorodr](https://github.com/claudiorodr))
+- Remove x2 label [\#55](https://github.com/filecoin-project/filecoin-retrieval-market-website/pull/55) ([claudiorodr](https://github.com/claudiorodr))
+
 ## [v0.0.7](https://github.com/untile/filecoin-retrieval-market-website/releases/tag/v0.0.7) (2022-04-13)
 - Fix validate-branch-name pattern [\#53](https://github.com/untile/filecoin-retrieval-market-website/pull/53) ([rafaelcruzazevedo](https://github.com/rafaelcruzazevedo))
 - Update validate-branch-name pattern [\#52](https://github.com/untile/filecoin-retrieval-market-website/pull/52) ([rafaelcruzazevedo](https://github.com/rafaelcruzazevedo))
