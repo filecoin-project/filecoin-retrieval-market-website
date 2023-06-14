@@ -28,7 +28,7 @@ jobs:
           node-version: '14.17.0'
 
       - name: Setup module dependencies cache
-        uses: actions/cache@v2
+        uses: actions/cache@v3
         with:
           path: node_modules
           key: ${{ runner.os }}-modules-${{ hashFiles('**/yarn.lock') }}
